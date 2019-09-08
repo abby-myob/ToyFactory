@@ -13,39 +13,44 @@ namespace ToyFactoryTests
         public void ToyBlockSetShape(Shape expected)
         {
             // Arrange
-            var toyblock = new ToyBlock();
+            var toyBlock = new ToyBlock();
             
             // Act
-            toyblock.SetShape(expected);
+            toyBlock.SetShape(expected);
 
             // Assert
-            Assert.Equal(expected, toyblock.Shape);
+            Assert.Equal(expected, toyBlock.Shape);
         }
         
-        [Fact]
-        public void ToyBlock_test_set_Colour()
+        [Theory]
+        [InlineData(Colour.Blue)]
+        [InlineData(Colour.Red)]
+        [InlineData(Colour.Yellow)]
+        public void ToyBlock_test_set_Colour(Colour expected)
         {
             // Arrange
-            var toyblock = new ToyBlock();
+            var toyBlock = new ToyBlock();
             
             // Act
-            toyblock.SetColour(Colour.Red);
+            toyBlock.SetColour(expected);
 
             // Assert
-            Assert.Equal(Colour.Red, toyblock.Colour);
+            Assert.Equal(expected, toyBlock.Colour);
         }
     }
 
     public enum Colour
     {
-        Red
+        Red,
+        Blue,
+        Yellow
     }
 
     public enum Shape
     {
         Square, 
-        Circle,
-        Triangle
+        Triangle,
+        Circle
     }
 
     public class ToyBlock
@@ -58,9 +63,9 @@ namespace ToyFactoryTests
             Shape = shape;
         }
 
-        public void SetColour(object red)
+        public void SetColour(Colour colour)
         {
-             
+            Colour = colour;
         }
     }
 }
