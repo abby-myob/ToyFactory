@@ -23,7 +23,7 @@ namespace ToyFactoryTests
         }
         
         [Fact]
-        public void ToyBlockSetShape()
+        public void ToyBlock_test_set_Colour()
         {
             // Arrange
             var toyblock = new ToyBlock();
@@ -60,7 +60,7 @@ namespace ToyFactoryTests
 
         public void SetColour(object red)
         {
-            throw new NotImplementedException();
+             
         }
     }
 }
