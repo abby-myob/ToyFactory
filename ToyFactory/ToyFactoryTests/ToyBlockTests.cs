@@ -1,5 +1,5 @@
-using System;
-using System.Collections.Generic;
+using ToyFactoryLibrary;
+using ToyFactoryLibrary.Enums;
 using Xunit;
 
 namespace ToyFactoryTests
@@ -36,36 +36,6 @@ namespace ToyFactoryTests
 
             // Assert
             Assert.Equal(expected, toyBlock.Colour);
-        }
-    }
-
-    public enum Colour
-    {
-        Red,
-        Blue,
-        Yellow
-    }
-
-    public enum Shape
-    {
-        Square, 
-        Triangle,
-        Circle
-    }
-
-    public class ToyBlock
-    {
-        public Shape Shape { get; private set; }
-        public Colour Colour { get; set; }
-
-        public void SetShape(Shape shape)
-        {
-            Shape = shape;
-        }
-
-        public void SetColour(Colour colour)
-        {
-            Colour = colour;
         }
     }
 }
