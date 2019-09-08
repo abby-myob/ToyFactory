@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace ToyFactoryTests
@@ -20,6 +21,24 @@ namespace ToyFactoryTests
             // Assert
             Assert.Equal(expected, toyblock.Shape);
         }
+        
+        [Fact]
+        public void ToyBlockSetShape()
+        {
+            // Arrange
+            var toyblock = new ToyBlock();
+            
+            // Act
+            toyblock.SetColour(Colour.Red);
+
+            // Assert
+            Assert.Equal(Colour.Red, toyblock.Colour);
+        }
+    }
+
+    public enum Colour
+    {
+        Red
     }
 
     public enum Shape
@@ -32,9 +51,16 @@ namespace ToyFactoryTests
     public class ToyBlock
     {
         public Shape Shape { get; private set; }
+        public Colour Colour { get; set; }
+
         public void SetShape(Shape shape)
         {
-            Shape = Shape.Circle;
+            Shape = shape;
+        }
+
+        public void SetColour(object red)
+        {
+            throw new NotImplementedException();
         }
     }
 }
