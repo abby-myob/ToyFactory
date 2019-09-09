@@ -13,10 +13,9 @@ namespace ToyFactoryTests.ToyBlockTests
         public void ToyBlock_test_set_Colour(Colour expected)
         {
             // Arrange
-            var triangle = new Triangle();
+            var triangle = new Triangle(expected);
 
-            // Act
-            triangle.Paint(expected);
+            // Act 
 
             // Assert
             Assert.Equal(expected, triangle.Colour);

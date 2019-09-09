@@ -13,10 +13,9 @@ namespace ToyFactoryTests.ToyBlockTests
         public void Circle_test_set_Colour(Colour expected)
         {
             // Arrange
-            var circle = new Circle();
+            var circle = new Circle(expected);
 
-            // Act
-            circle.Paint(expected);
+            // Act 
 
             // Assert
             Assert.Equal(expected, circle.Colour);

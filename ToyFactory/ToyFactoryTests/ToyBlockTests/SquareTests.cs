@@ -13,10 +13,9 @@ namespace ToyFactoryTests.ToyBlockTests
         public void ToyBlock_test_set_Colour(Colour expected)
         {
             // Arrange
-            var square = new Square();
+            var square = new Square(expected);
             
-            // Act
-            square.Paint(expected);
+            // Act 
 
             // Assert
             Assert.Equal(expected, square.Colour);
