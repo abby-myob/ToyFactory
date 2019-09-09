@@ -5,15 +5,15 @@ namespace ToyFactoryLibrary
 {
     public class ToyBlock : IToyBlock
     {
-        public Shape Shape { get; private set; }
+        public Shape Shape { get; }
         public Colour Colour { get; private set; }
-
-        public void SetShape(Shape shape)
+        
+        public ToyBlock(Shape shape)
         {
             Shape = shape;
-        }
-
-        public void SetColour(Colour colour)
+        } 
+        
+        public void Paint(Colour colour)
         {
             Colour = colour;
         }

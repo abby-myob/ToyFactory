@@ -12,11 +12,9 @@ namespace ToyFactoryTests
         [InlineData(Shape.Triangle)]
         public void ToyBlockSetShape(Shape expected)
         {
-            // Arrange
-            var toyBlock = new ToyBlock();
-            
-            // Act
-            toyBlock.SetShape(expected);
+            // Arrange & Act // This is a low quality test I think 
+            // TODO should the toyblock just be squares, circles and triangles implementing the IToyBlock interface.
+            var toyBlock = new ToyBlock(expected); 
 
             // Assert
             Assert.Equal(expected, toyBlock.Shape);
@@ -29,10 +27,10 @@ namespace ToyFactoryTests
         public void ToyBlock_test_set_Colour(Colour expected)
         {
             // Arrange
-            var toyBlock = new ToyBlock();
+            var toyBlock = new ToyBlock(Shape.Circle);
             
             // Act
-            toyBlock.SetColour(expected);
+            toyBlock.Paint(expected);
 
             // Assert
             Assert.Equal(expected, toyBlock.Colour);
