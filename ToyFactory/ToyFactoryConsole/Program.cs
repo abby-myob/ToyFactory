@@ -8,7 +8,6 @@ namespace ToyFactoryConsole
         private static void Main()
         {
             Console.WriteLine(Constants.Welcome);
-  
         }
     }
 }

@@ -2,7 +2,7 @@ using ToyFactoryLibrary;
 using ToyFactoryLibrary.Enums;
 using Xunit;
 
-namespace ToyFactoryTests
+namespace ToyFactoryTests.ToyBlockTests
 {
     public class SquareTests 
     {
@@ -22,15 +22,5 @@ namespace ToyFactoryTests
             Assert.Equal(expected, square.Colour);
         }
         
-    }
-
-    public class Square
-    {
-        public Colour Colour { get; private set; }
-
-        public void Paint(Colour colour)
-        {
-            Colour = colour;
-        }
     }
 }
