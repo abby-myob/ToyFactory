@@ -48,9 +48,9 @@ namespace ToyFactoryLibrary
         public const string YellowText = "Yellow";
 
         public const string Column = " | ";
-        public string RowWithColours = $" |          | {RedText} | {BlueText} | {YellowText} | ";
-        public const string RowWithColoursLine = " |----------|-----|------|--------| ";
-        public const string RowWithQty = " |          | Qty | ";
-        public const string RowWithQtyLine = " |----------|-----| ";
+        public const string RowWithColours =     " |            |  Red  |  Blue  |  Yellow  | ";
+        public const string RowWithColoursLine = " | ---------- | ----- | ------ | -------- | ";
+        public const string RowWithQty =         " |            | Qty  | ";
+        public const string RowWithQtyLine =     " | ---------- | ---- | ";
     }
 }

@@ -8,6 +8,10 @@ namespace ToyFactoryConsole
         private static void Main()
         {
             Console.WriteLine(Constants.Welcome);
+            
+            var orderManager = new OrderManager(new ConsoleResponseManager());
+            
+            orderManager.collectOrder();
         }
     }
 }

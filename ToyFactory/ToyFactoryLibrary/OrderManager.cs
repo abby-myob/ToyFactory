@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Net;
 
 namespace ToyFactoryLibrary
 {
@@ -18,13 +19,13 @@ namespace ToyFactoryLibrary
             var order = new Order(ResponseManager.GetName(), ResponseManager.GetAddress(), ResponseManager.GetDueDate(), currentOrderNumber, ResponseManager);
             order.CreateToyBlocksOrder();
             currentOrderNumber++;
-        }
-        // Collect Orders
+            
+            ResponseManager.PrintCuttingListReport(order);
+            ResponseManager.PrintPaintingReport(order);
+        } 
         
         // Go through orders and 
         
-        // Generate Invoice
-        // Generate Cutting List
-        // Generate Painting Report
+        // Generate Invoice 
     }
 }

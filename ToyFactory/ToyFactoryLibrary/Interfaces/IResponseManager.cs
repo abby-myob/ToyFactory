@@ -1,4 +1,5 @@
 using System;
+using ToyFactoryLibrary.Interfaces;
 
 namespace ToyFactoryLibrary
 {
@@ -16,5 +17,7 @@ namespace ToyFactoryLibrary
         int GetRedCircles();
         int GetBlueCircles();
         int GetYellowCircles();
+        void PrintCuttingListReport(IOrder order);
+        void PrintPaintingReport(IOrder order);
     }
 }
