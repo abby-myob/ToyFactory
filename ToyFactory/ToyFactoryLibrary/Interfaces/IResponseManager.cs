@@ -17,6 +17,7 @@ namespace ToyFactoryLibrary
         int GetRedCircles();
         int GetBlueCircles();
         int GetYellowCircles();
+        void PrintInvoice(IOrder order);
         void PrintCuttingListReport(IOrder order);
         void PrintPaintingReport(IOrder order);
     }

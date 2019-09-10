@@ -1,31 +1,47 @@
 using System.Collections.Generic;
-using System.Net;
 
 namespace ToyFactoryLibrary
 {
     public class OrderManager
     {
         public IResponseManager ResponseManager { get; }
-        public List<Order> orders = new List<Order>();
-        public int currentOrderNumber = 0001;
+        public List<Order> Orders { get; private set; }
+        public int CurrentOrderNumber = 1;
 
         public OrderManager(IResponseManager responseManager)
         {
             ResponseManager = responseManager;
+            Orders = new List<Order>();
         }
 
-        public void collectOrder()
+        public void CollectOrder()
         {
-            var order = new Order(ResponseManager.GetName(), ResponseManager.GetAddress(), ResponseManager.GetDueDate(), currentOrderNumber, ResponseManager);
-            order.CreateToyBlocksOrder();
-            currentOrderNumber++;
+            var order = new Order(
+                ResponseManager.GetName(),
+                ResponseManager.GetAddress(),
+                ResponseManager.GetDueDate(),
+                CurrentOrderNumber,
+                ResponseManager
+            );
             
-            ResponseManager.PrintCuttingListReport(order);
-            ResponseManager.PrintPaintingReport(order);
-        } 
-        
-        // Go through orders and 
-        
-        // Generate Invoice 
+            order.CreateToyBlocksOrder();
+            Orders.Add(order);
+            CurrentOrderNumber++;
+        }
+
+        public void GenerateInvoice()
+        {
+            ResponseManager.PrintInvoice(Orders[0]);
+        }
+
+        public void GenerateCuttingListReport()
+        {
+            ResponseManager.PrintCuttingListReport(Orders[0]);
+        }
+
+        public void GeneratePaintingReport()
+        {
+            ResponseManager.PrintPaintingReport(Orders[0]);
+        }
     }
 }

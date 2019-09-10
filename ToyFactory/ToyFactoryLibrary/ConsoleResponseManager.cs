@@ -100,7 +100,38 @@ namespace ToyFactoryLibrary
             Console.WriteLine("");
             Console.WriteLine(Constants.PaintingReportHasBeenGenerated);
             Console.WriteLine("");
+            PrintOrderHeader(order); 
+            PrintToyBlockTable(order);
+        }
+
+        public void PrintInvoice(IOrder order)
+        {
+            Console.WriteLine("");
+            Console.WriteLine(Constants.InvoiceHasBeenGenerated);
+            Console.WriteLine("");
             PrintOrderHeader(order);
+            PrintToyBlockTable(order);
+            Console.WriteLine("");
+            Console.WriteLine(
+                $"{Constants.SquaresText}                    {order.ToyBlocks.Count(x => x is Square)} @ ${Constants.SquarePrice} {Constants.PPIText} ${order.ToyBlocks.Count(x => x is Square) * Constants.SquarePrice}");
+            Console.WriteLine(
+                $"{Constants.TrianglesText}                  {order.ToyBlocks.Count(x => x is Triangle)} @ ${Constants.TrianglePrice} {Constants.PPIText} ${order.ToyBlocks.Count(x => x is Triangle) * Constants.TrianglePrice}");
+            Console.WriteLine(
+                $"{Constants.CirclesText}                    {order.ToyBlocks.Count(x => x is Circle)} @ ${Constants.SquarePrice} {Constants.PPIText} ${order.ToyBlocks.Count(x => x is Circle) * Constants.CirclePrice}");
+            Console.WriteLine(
+                $"{Constants.RedColourSurchargeText}       {order.ToyBlocks.Count(x => x.Colour == Colour.Red)} @ ${Constants.RedColourSurcharge} {Constants.PPIText} ${order.ToyBlocks.Count(x => x.Colour == Colour.Red) * Constants.RedColourSurcharge}");
+        }
+
+        private void PrintOrderHeader(IOrder order)
+        {
+            Console.Write($"{Constants.NameText}{order.Name}  ");
+            Console.Write($"{Constants.AddressText}{order.Address}  ");
+            Console.Write($"{Constants.DueDateText}{order.DueDate}  ");
+            Console.Write($"{Constants.OrderNumberText}{order.OrderNumber}  \n");
+        }
+
+        private void PrintToyBlockTable(IOrder order)
+        {
             Console.WriteLine(Constants.RowWithColours);
             Console.WriteLine(Constants.RowWithColoursLine);
             Console.WriteLine(
@@ -121,14 +152,6 @@ namespace ToyFactoryLibrary
                 $"{Constants.Column} {order.ToyBlocks.Where(x => x is Circle).Count(x => x.Colour == Colour.Blue)}    " +
                 $"{Constants.Column} {order.ToyBlocks.Where(x => x is Circle).Count(x => x.Colour == Colour.Yellow)}      " +
                 $"{Constants.Column}");
-        }
-
-        private void PrintOrderHeader(IOrder order)
-        {
-            Console.WriteLine($"{Constants.NameText} {order.Name}");
-            Console.WriteLine($"{Constants.AddressText} {order.Address}");
-            Console.WriteLine($"{Constants.DueDateText} {order.DueDate}");
-            Console.WriteLine($"{Constants.OrderNumberText} {order.OrderNumber}");
         }
     }
 }

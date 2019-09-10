@@ -29,7 +29,7 @@ namespace ToyFactoryLibrary
 
         public const string InvoiceHasBeenGenerated = "Your invoice report has been generated: ";
         public const string CuttingListHasBeenGenerated = "Your cutting list has been generated: ";
-        public const string PaintingReportHasBeenGenerated = "Your cutting report has been generated: ";
+        public const string PaintingReportHasBeenGenerated = "Your painting report has been generated: ";
         
         
         public const string NameText = "Name: ";

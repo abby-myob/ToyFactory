@@ -11,7 +11,10 @@ namespace ToyFactoryConsole
             
             var orderManager = new OrderManager(new ConsoleResponseManager());
             
-            orderManager.collectOrder();
+            orderManager.CollectOrder();
+            orderManager.GenerateInvoice();
+            orderManager.GenerateCuttingListReport();
+            orderManager.GeneratePaintingReport();
         }
     }
 }
