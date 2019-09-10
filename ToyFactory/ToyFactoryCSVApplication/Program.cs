@@ -1,12 +1,30 @@
 ﻿using System;
+using System.IO;
+using CsvHelper;
 
 namespace ToyFactoryCSVApplication
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
-            Console.WriteLine("Hello World!");
+            void Main()
+            {
+                using (var reader = new StreamReader("/Users/abby.thompson/Development/ToyFactory/sampleInput"))
+                using (var csv = new CsvReader(reader))
+                {
+                    Console.WriteLine(csv.GetRecords<Foo>());
+                    
+                }
+            }
+ 
         }
-    }
+        
+        public class Foo
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+        }
+
+    } 
 }
