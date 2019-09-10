@@ -5,12 +5,13 @@ namespace ToyFactoryLibrary
 {
     public class OrderManager
     {
-        public IResponseManager ResponseManager { get; }
-        public List<Order> Orders { get; private set; }
-        public int CurrentOrderNumber = 1;
+        private IResponseManager ResponseManager { get; }
+        public List<Order> Orders { get; }
+        private int CurrentOrderNumber { get; set; }
 
         public OrderManager(IResponseManager responseManager)
         {
+            CurrentOrderNumber = 1;
             ResponseManager = responseManager;
             Orders = new List<Order>();
         }
@@ -21,9 +22,9 @@ namespace ToyFactoryLibrary
             var address = ResponseManager.GetAddress();
             var dueDate = ResponseManager.GetDueDate();
 
-            var order = new Order(name, address, dueDate, CurrentOrderNumber, ResponseManager);
+            var order = new Order(name, address, dueDate, CurrentOrderNumber, ResponseManager, new ToyBlocksList());
             order.CreateToyBlocks();
-            
+
             Orders.Add(order);
             CurrentOrderNumber++;
         }

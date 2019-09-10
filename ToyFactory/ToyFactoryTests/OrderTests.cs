@@ -102,16 +102,16 @@ namespace ToyFactoryTests
             fakeResponse.Setup(f => f.GetYellowCircles()).Returns(values[8]);
 
             // Arrange  what th4 f*k
-            var order = new Order("A", "4", DateTime.Now, 0001, fakeResponse.Object);
+            var order = new Order("A", "4", DateTime.Now, 0001, fakeResponse.Object, new ToyBlocksList());
 
             // Act 
             order.CreateToyBlocks();
 
             // Assert
-            for (var i = 0; i < order.ToyBlocks.Count; i++)
+            for (var i = 0; i < order.ToyBlocksList.ToyBlocks.Count; i++)
             {
-                Assert.Equal(expected[i].GetType(), order.ToyBlocks[i].GetType());
-                Assert.Equal(expected[i].Colour, order.ToyBlocks[i].Colour);
+                Assert.Equal(expected[i].GetType(), order.ToyBlocksList.ToyBlocks[0].GetType());
+                Assert.Equal(expected[i].Colour, order.ToyBlocksList.ToyBlocks[i].Colour);
             }
         }
     }

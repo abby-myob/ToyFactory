@@ -89,11 +89,11 @@ namespace ToyFactoryLibrary
             Console.WriteLine(Constants.RowWithQty);
             Console.WriteLine(Constants.RowWithQtyLine);
             Console.WriteLine(
-                $"{Constants.Column}{Constants.SquaresText}   {Constants.Column} {order.ToyBlocks.Count(x => x is Square)}  {Constants.Column}");
+                $"{Constants.Column}{Constants.SquaresText}   {Constants.Column} {order.ToyBlocksList.TotalSquares}  {Constants.Column}");
             Console.WriteLine(
-                $"{Constants.Column}{Constants.TrianglesText} {Constants.Column} {order.ToyBlocks.Count(x => x is Triangle)}  {Constants.Column}");
+                $"{Constants.Column}{Constants.TrianglesText} {Constants.Column} {order.ToyBlocksList.TotalTriangles}  {Constants.Column}");
             Console.WriteLine(
-                $"{Constants.Column}{Constants.CirclesText}   {Constants.Column} {order.ToyBlocks.Count(x => x is Circle)}  {Constants.Column}");
+                $"{Constants.Column}{Constants.CirclesText}   {Constants.Column} {order.ToyBlocksList.TotalCircles}  {Constants.Column}");
         }
 
         public void GeneratePaintingReport(IOrder order)
@@ -114,13 +114,13 @@ namespace ToyFactoryLibrary
             PrintToyBlockTable(order);
             Console.WriteLine("");
             Console.WriteLine(
-                $"{Constants.SquaresText}                    {order.ToyBlocks.Count(x => x is Square)} @ ${Constants.SquarePrice} {Constants.PPIText} ${order.ToyBlocks.Count(x => x is Square) * Constants.SquarePrice}");
+                $"{Constants.SquaresText}                    {order.ToyBlocksList.TotalSquares} @ ${Constants.SquarePrice} {Constants.PPIText} ${order.ToyBlocksList.TotalSquares * Constants.SquarePrice}");
             Console.WriteLine(
-                $"{Constants.TrianglesText}                  {order.ToyBlocks.Count(x => x is Triangle)} @ ${Constants.TrianglePrice} {Constants.PPIText} ${order.ToyBlocks.Count(x => x is Triangle) * Constants.TrianglePrice}");
+                $"{Constants.TrianglesText}                  {order.ToyBlocksList.TotalTriangles} @ ${Constants.TrianglePrice} {Constants.PPIText} ${order.ToyBlocksList.TotalTriangles * Constants.TrianglePrice}");
             Console.WriteLine(
-                $"{Constants.CirclesText}                    {order.ToyBlocks.Count(x => x is Circle)} @ ${Constants.SquarePrice} {Constants.PPIText} ${order.ToyBlocks.Count(x => x is Circle) * Constants.CirclePrice}");
+                $"{Constants.CirclesText}                    {order.ToyBlocksList.TotalCircles} @ ${Constants.SquarePrice} {Constants.PPIText} ${order.ToyBlocksList.TotalCircles * Constants.CirclePrice}");
             Console.WriteLine(
-                $"{Constants.RedColourSurchargeText}       {order.ToyBlocks.Count(x => x.Colour == Colour.Red)} @ ${Constants.RedColourSurcharge} {Constants.PPIText} ${order.ToyBlocks.Count(x => x.Colour == Colour.Red) * Constants.RedColourSurcharge}");
+                $"{Constants.RedColourSurchargeText}       {order.ToyBlocksList.TotalRedBlocks} @ ${Constants.RedColourSurcharge} {Constants.PPIText} ${order.ToyBlocksList.TotalRedBlocks * Constants.RedColourSurcharge}");
         }
 
         private void PrintOrderHeader(IOrder order)
@@ -137,21 +137,21 @@ namespace ToyFactoryLibrary
             Console.WriteLine(Constants.RowWithColoursLine);
             Console.WriteLine(
                 $"{Constants.Column}{Constants.SquaresText}   " +
-                $"{Constants.Column} {order.ToyBlocks.Where(x => x is Square).Count(x => x.Colour == Colour.Red)}   " +
-                $"{Constants.Column} {order.ToyBlocks.Where(x => x is Square).Count(x => x.Colour == Colour.Blue)}    " +
-                $"{Constants.Column} {order.ToyBlocks.Where(x => x is Square).Count(x => x.Colour == Colour.Yellow)}      " +
+                $"{Constants.Column} {order.ToyBlocksList.RedTriangles}   " +
+                $"{Constants.Column} {order.ToyBlocksList.RedTriangles}    " +
+                $"{Constants.Column} {order.ToyBlocksList.RedTriangles}      " +
                 $"{Constants.Column}");
             Console.WriteLine(
                 $"{Constants.Column}{Constants.TrianglesText} " +
-                $"{Constants.Column} {order.ToyBlocks.Where(x => x is Triangle).Count(x => x.Colour == Colour.Red)}   " +
-                $"{Constants.Column} {order.ToyBlocks.Where(x => x is Triangle).Count(x => x.Colour == Colour.Blue)}    " +
-                $"{Constants.Column} {order.ToyBlocks.Where(x => x is Triangle).Count(x => x.Colour == Colour.Yellow)}      " +
+                $"{Constants.Column} {order.ToyBlocksList.RedTriangles}   " +
+                $"{Constants.Column} {order.ToyBlocksList.RedTriangles}    " +
+                $"{Constants.Column} {order.ToyBlocksList.RedTriangles}      " +
                 $"{Constants.Column}");
             Console.WriteLine(
                 $"{Constants.Column}{Constants.CirclesText}   " +
-                $"{Constants.Column} {order.ToyBlocks.Where(x => x is Circle).Count(x => x.Colour == Colour.Red)}   " +
-                $"{Constants.Column} {order.ToyBlocks.Where(x => x is Circle).Count(x => x.Colour == Colour.Blue)}    " +
-                $"{Constants.Column} {order.ToyBlocks.Where(x => x is Circle).Count(x => x.Colour == Colour.Yellow)}      " +
+                $"{Constants.Column} {order.ToyBlocksList.RedTriangles}   " +
+                $"{Constants.Column} {order.ToyBlocksList.RedTriangles}    " +
+                $"{Constants.Column} {order.ToyBlocksList.RedTriangles}      " +
                 $"{Constants.Column}");
         }
     }

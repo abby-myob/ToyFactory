@@ -9,7 +9,7 @@ namespace ToyFactoryLibrary.Interfaces
         string Address { get; }
         DateTime DueDate { get; }
         int OrderNumber { get; }
-        List<IToyBlock> ToyBlocks { get; }
+        IToyBlocksList ToyBlocksList { get; }
         IResponseManager ResponseManager { get; }
         void CreateToyBlocks();
     }
