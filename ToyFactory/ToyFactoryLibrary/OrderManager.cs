@@ -29,19 +29,12 @@ namespace ToyFactoryLibrary
             CurrentOrderNumber++;
         }
 
-        public void GenerateInvoice()
+        public void GenerateReports(int orderNumber)
         {
-            ResponseManager.PrintInvoice(Orders[0]);
-        }
-
-        public void GenerateCuttingListReport()
-        {
-            ResponseManager.PrintCuttingListReport(Orders[0]);
-        }
-
-        public void GeneratePaintingReport()
-        {
-            ResponseManager.PrintPaintingReport(Orders[0]);
-        }
+            var order = Orders.Find(o => o.OrderNumber == orderNumber);
+            ResponseManager.PrintInvoice(order);
+            ResponseManager.PrintCuttingListReport(order);
+            ResponseManager.PrintPaintingReport(order);
+        } 
     }
 }

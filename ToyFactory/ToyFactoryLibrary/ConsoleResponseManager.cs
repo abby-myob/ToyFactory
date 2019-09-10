@@ -21,7 +21,7 @@ namespace ToyFactoryLibrary
 
         public DateTime GetDueDate()
         {
-            Console.Write(Constants.InputDueDate);
+            Console.Write(Constants.InputDueDate); 
             return Convert.ToDateTime(Console.ReadLine());
         }
 
