@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ToyFactoryLibrary.Blocks;
 using ToyFactoryLibrary.Enums;
 using ToyFactoryLibrary.Interfaces;
 

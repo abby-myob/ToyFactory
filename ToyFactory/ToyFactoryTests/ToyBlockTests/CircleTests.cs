@@ -1,4 +1,5 @@
 using ToyFactoryLibrary;
+using ToyFactoryLibrary.Blocks;
 using ToyFactoryLibrary.Enums;
 using Xunit;
 

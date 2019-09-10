@@ -1,13 +1,13 @@
 using ToyFactoryLibrary.Enums;
 using ToyFactoryLibrary.Interfaces;
 
-namespace ToyFactoryLibrary
+namespace ToyFactoryLibrary.Blocks
 {
-    public class Circle : IToyBlock
+    public class Triangle : IToyBlock
     {
         public Colour Colour { get; private set; }
 
-        public Circle(Colour colour)
+        public Triangle(Colour colour)
         {
             Colour = colour;
         }

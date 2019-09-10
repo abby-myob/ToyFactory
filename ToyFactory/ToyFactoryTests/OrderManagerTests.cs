@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Moq;
 using ToyFactoryLibrary;
+using ToyFactoryLibrary.Blocks;
 using ToyFactoryLibrary.Enums;
 using ToyFactoryLibrary.Interfaces;
 using Xunit;
