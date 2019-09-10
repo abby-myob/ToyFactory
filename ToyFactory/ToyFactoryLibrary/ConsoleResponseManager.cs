@@ -79,7 +79,7 @@ namespace ToyFactoryLibrary
             return Convert.ToInt32(Console.ReadLine());
         }
 
-        public void PrintCuttingListReport(IOrder order)
+        public void GenerateCuttingListReport(IOrder order)
         {
             Console.WriteLine("");
             Console.WriteLine(Constants.CuttingListHasBeenGenerated);
@@ -95,7 +95,7 @@ namespace ToyFactoryLibrary
                 $"{Constants.Column}{Constants.CirclesText}   {Constants.Column} {order.ToyBlocks.Count(x => x is Circle)}  {Constants.Column}");
         }
 
-        public void PrintPaintingReport(IOrder order)
+        public void GeneratePaintingReport(IOrder order)
         {
             Console.WriteLine("");
             Console.WriteLine(Constants.PaintingReportHasBeenGenerated);
@@ -104,7 +104,7 @@ namespace ToyFactoryLibrary
             PrintToyBlockTable(order);
         }
 
-        public void PrintInvoice(IOrder order)
+        public void GenerateInvoice(IOrder order)
         {
             Console.WriteLine("");
             Console.WriteLine(Constants.InvoiceHasBeenGenerated);

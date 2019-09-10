@@ -24,61 +24,43 @@ namespace ToyFactoryLibrary
             ToyBlocks = new List<IToyBlock>();
         }
 
-        public void CreateToyBlocksOrder()
+        public void CreateToyBlocks()
         {
             var max = ResponseManager.GetRedSquares();
-            for (var i = 0; i < max; i++)
-            {
-                ToyBlocks.Add(new Square(Colour.Red));
-            }
+            for (var i = 0; i < max; i++) ToyBlocks.Add(new Square(Colour.Red));
+            
             
             max = ResponseManager.GetBlueSquares();
-            for (var i = 0; i < max; i++)
-            {
-                ToyBlocks.Add(new Square(Colour.Blue));
-            }
+            for (var i = 0; i < max; i++) ToyBlocks.Add(new Square(Colour.Blue));
+            
             
             max = ResponseManager.GetYellowSquares(); 
-            for (var i = 0; i < max; i++)
-            {
-                ToyBlocks.Add(new Square(Colour.Yellow));
-            }
+            for (var i = 0; i < max; i++) ToyBlocks.Add(new Square(Colour.Yellow));
+            
             
             max = ResponseManager.GetRedTriangles(); 
-            for (var i = 0; i < max; i++)
-            {
-                ToyBlocks.Add(new Triangle(Colour.Red));
-            }
+            for (var i = 0; i < max; i++) ToyBlocks.Add(new Triangle(Colour.Red));
+            
             
             max = ResponseManager.GetBlueTriangles(); 
-            for (var i = 0; i < max; i++)
-            {
-                ToyBlocks.Add(new Triangle(Colour.Blue));
-            }
+            for (var i = 0; i < max; i++) ToyBlocks.Add(new Triangle(Colour.Blue));
+            
             
             max =  ResponseManager.GetYellowTriangles(); 
-            for (var i = 0; i < max; i++)
-            {
-                ToyBlocks.Add(new Triangle(Colour.Yellow));
-            }
+            for (var i = 0; i < max; i++) ToyBlocks.Add(new Triangle(Colour.Yellow));
+            
             
             max = ResponseManager.GetRedCircles();
-            for (var i = 0; i < max; i++)
-            {
-                ToyBlocks.Add(new Circle(Colour.Red));
-            }
+            for (var i = 0; i < max; i++) ToyBlocks.Add(new Circle(Colour.Red));
+            
             
             max = ResponseManager.GetBlueCircles();
-            for (var i = 0; i < max; i++)
-            {
-                ToyBlocks.Add(new Circle(Colour.Blue));
-            }
+            for (var i = 0; i < max; i++) ToyBlocks.Add(new Circle(Colour.Blue));
+            
             
             max = ResponseManager.GetYellowCircles();
-            for (var i = 0; i < max; i++)
-            {
-                ToyBlocks.Add(new Circle(Colour.Yellow));
-            }
+            for (var i = 0; i < max; i++) ToyBlocks.Add(new Circle(Colour.Yellow));
+            
         }
     }
 }

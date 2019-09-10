@@ -1,7 +1,6 @@
 using System;
-using ToyFactoryLibrary.Interfaces;
 
-namespace ToyFactoryLibrary
+namespace ToyFactoryLibrary.Interfaces
 {
     public interface IResponseManager
     {
@@ -17,8 +16,8 @@ namespace ToyFactoryLibrary
         int GetRedCircles();
         int GetBlueCircles();
         int GetYellowCircles();
-        void PrintInvoice(IOrder order);
-        void PrintCuttingListReport(IOrder order);
-        void PrintPaintingReport(IOrder order);
+        void GenerateInvoice(IOrder order);
+        void GenerateCuttingListReport(IOrder order);
+        void GeneratePaintingReport(IOrder order);
     }
 }

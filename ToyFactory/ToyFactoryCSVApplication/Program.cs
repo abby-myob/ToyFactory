@@ -1,30 +1,43 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using CsvHelper;
+using ToyFactoryLibrary;
+using ToyFactoryLibrary.Enums;
+using ToyFactoryLibrary.Interfaces;
 
 namespace ToyFactoryCSVApplication
 {
-    internal class Program
+    internal static class Program
     {
         private static void Main()
-        {
-            void Main()
-            {
-                using (var reader = new StreamReader("/Users/abby.thompson/Development/ToyFactory/sampleInput"))
+        { 
+                using (var reader = new StreamReader("/Users/abby.thompson/Development/ToyFactory/Input"))
                 using (var csv = new CsvReader(reader))
                 {
-                    Console.WriteLine(csv.GetRecords<Foo>());
-                    
+                    var records = csv.GetRecords<IOrder>();
+                    foreach (var food in records)
+                    {
+                        Console.WriteLine(food);
+                    }
                 }
-            }
- 
-        }
-        
-        public class Foo
-        {
-            public int Id { get; set; }
-            public string Name { get; set; }
-        }
-
+                
+                using (var writer = new StreamWriter("/Users/abby.thompson/Development/ToyFactory/Output"))
+                using (var csv2 = new CsvWriter(writer))
+                {
+                    var records = new List<IOrder>
+                    {
+                        new Order("Abby", "20 June St", DateTime.Now, 10, new ConsoleResponseManager())
+                        {
+                            ToyBlocks = { new Circle(Colour.Red)}
+                        }
+                    };
+                    csv2.WriteRecords(records);
+                    foreach (var food in records)
+                    {
+                        Console.WriteLine(food);
+                    }
+                } 
+        }  
     } 
 }

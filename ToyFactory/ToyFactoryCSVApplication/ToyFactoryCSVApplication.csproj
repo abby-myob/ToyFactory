@@ -9,4 +9,8 @@
       <PackageReference Include="CsvHelper" Version="12.1.2" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\ToyFactoryLibrary\ToyFactoryLibrary.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -104,7 +104,7 @@ namespace ToyFactoryTests
             var order = new Order("A", "4", DateTime.Now, 0001, fakeResponse.Object);
 
             // Act 
-            order.CreateToyBlocksOrder();
+            order.CreateToyBlocks();
 
             // Assert
             for (var i = 0; i < order.ToyBlocks.Count; i++)

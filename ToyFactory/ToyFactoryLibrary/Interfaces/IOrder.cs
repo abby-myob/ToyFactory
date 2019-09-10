@@ -11,6 +11,6 @@ namespace ToyFactoryLibrary.Interfaces
         int OrderNumber { get; }
         List<IToyBlock> ToyBlocks { get; }
         IResponseManager ResponseManager { get; }
-        void CreateToyBlocksOrder();
+        void CreateToyBlocks();
     }
 }

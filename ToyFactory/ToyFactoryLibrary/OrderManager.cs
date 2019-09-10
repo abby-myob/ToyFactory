@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using ToyFactoryLibrary.Interfaces;
 
 namespace ToyFactoryLibrary
 {
@@ -16,15 +17,13 @@ namespace ToyFactoryLibrary
 
         public void CollectOrder()
         {
-            var order = new Order(
-                ResponseManager.GetName(),
-                ResponseManager.GetAddress(),
-                ResponseManager.GetDueDate(),
-                CurrentOrderNumber,
-                ResponseManager
-            );
+            var name = ResponseManager.GetName();
+            var address = ResponseManager.GetAddress();
+            var dueDate = ResponseManager.GetDueDate();
+
+            var order = new Order(name, address, dueDate, CurrentOrderNumber, ResponseManager);
+            order.CreateToyBlocks();
             
-            order.CreateToyBlocksOrder();
             Orders.Add(order);
             CurrentOrderNumber++;
         }
@@ -32,9 +31,9 @@ namespace ToyFactoryLibrary
         public void GenerateReports(int orderNumber)
         {
             var order = Orders.Find(o => o.OrderNumber == orderNumber);
-            ResponseManager.PrintInvoice(order);
-            ResponseManager.PrintCuttingListReport(order);
-            ResponseManager.PrintPaintingReport(order);
-        } 
+            ResponseManager.GenerateInvoice(order);
+            ResponseManager.GenerateCuttingListReport(order);
+            ResponseManager.GeneratePaintingReport(order);
+        }
     }
 }
