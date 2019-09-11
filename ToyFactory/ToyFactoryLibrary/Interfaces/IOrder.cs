@@ -11,5 +11,7 @@ namespace ToyFactoryLibrary.Interfaces
         IToyBlocksList ToyBlocksList { get; }
         IResponseManager ResponseManager { get; }
         void CreateToyBlocks();
+
+        void EditName(string name);
     }
 }

@@ -120,6 +120,14 @@ namespace ToyFactoryTests
         public void create_order_and_test_editing_of_Name(string name, string expected)
         {
             // Arrange
+            var order = new Order(name, "4", DateTime.Now, 1, new ConsoleResponseManager(), new ToyBlocksList());
+
+            // Act
+            order.EditName(expected);
+            
+            // Assert
+            Assert.Equal(expected, order.Name);
+
         }
     }
 }

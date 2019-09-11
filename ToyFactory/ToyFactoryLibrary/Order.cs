@@ -54,5 +54,10 @@ namespace ToyFactoryLibrary
             for (var i = 0; i < max; i++) ToyBlocksList.Add(new Circle(Colour.Yellow));
             
         }
+
+        public void EditName(string newName)
+        {
+           Name = newName;
+        }
     }
 }
