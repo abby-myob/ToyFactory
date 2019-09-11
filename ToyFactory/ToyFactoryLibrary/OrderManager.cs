@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using ToyFactoryLibrary.Interfaces;
@@ -7,14 +8,14 @@ namespace ToyFactoryLibrary
     public class OrderManager
     {
         private IResponseManager ResponseManager { get; }
-        public List<Order> Orders { get; }
+        public List<IOrder> Orders { get; }
         private int CurrentOrderNumber { get; set; }
 
         public OrderManager(IResponseManager responseManager)
         {
             CurrentOrderNumber = 1;
             ResponseManager = responseManager;
-            Orders = new List<Order>();
+            Orders = new List<IOrder>();
         }
 
         public void CollectOrder()
@@ -32,7 +33,7 @@ namespace ToyFactoryLibrary
          
         public void GenerateReports(int orderNumber)
         {
-            var order = Orders.Find(o => o.OrderNumber == orderNumber);
+            var order = SearchByOrderNumber(orderNumber);
             ResponseManager.GenerateInvoice(order);
             ResponseManager.GenerateCuttingListReport(order);
             ResponseManager.GeneratePaintingReport(order);
@@ -43,10 +44,28 @@ namespace ToyFactoryLibrary
             ResponseManager.GenerateCuttingListOverallReport(Orders);
         }
         public void GeneratePaintingOverallReport()
-        {
-
-            
+        { 
             ResponseManager.GeneratePaintingListOverallReport(Orders);
+        }
+
+        public IOrder SearchByOrderNumber(int orderNumber)
+        {
+            return Orders.Find(o => o.OrderNumber == orderNumber);
+        }
+
+        public IEnumerable<IOrder> SearchOrderByPerson(string name)
+        { 
+            return Orders.Where(o => o.Name == name); 
+        }
+
+        public IEnumerable<IOrder> SearchOrderByDueDate(DateTime startDate, DateTime endDate)
+        {
+            return Orders.Where(o => o.DueDate.CompareTo(endDate) >= o.DueDate.CompareTo(startDate));
+        }
+
+        public void DeleteOrderByOrderNumber(int orderNumber)
+        { 
+            Orders.Remove(SearchByOrderNumber(orderNumber));
         }
     }
 }

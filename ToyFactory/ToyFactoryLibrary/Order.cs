@@ -7,12 +7,12 @@ namespace ToyFactoryLibrary
 {
     public class Order : IOrder
     {
-        public string Name { get; }
-        public string Address { get; }
-        public DateTime DueDate { get; }
-        public int OrderNumber { get; } 
+        public string Name { get; private set; }
+        public string Address { get; private set; }
+        public DateTime DueDate { get; private set; }
+        public int OrderNumber { get; private set; } 
         public IResponseManager ResponseManager { get; }
-        public IToyBlocksList ToyBlocksList { get; set; }
+        public IToyBlocksList ToyBlocksList { get; private set; }
 
         public Order(string name, string address, in DateTime dueDate, int orderNumber, IResponseManager responseManager, IToyBlocksList toyBlocksList)
         {

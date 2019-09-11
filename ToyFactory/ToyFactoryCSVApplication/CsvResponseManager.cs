@@ -82,14 +82,14 @@ namespace ToyFactoryLibrary
             throw new NotImplementedException();
         }
 
-        public void GenerateCuttingListOverallReport(List<Order> orders)
+        public void GenerateCuttingListOverallReport(List<IOrder> orders)
         {
-            throw new NotImplementedException();
+             
         }
 
-        public void GeneratePaintingListOverallReport(List<Order> orders)
+        public void GeneratePaintingListOverallReport(List<IOrder> orders)
         {
-            throw new NotImplementedException();
+             
         }
     }
 }

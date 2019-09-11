@@ -104,7 +104,7 @@ namespace ToyFactoryLibrary
             PrintToyBlockTable(order);
         }
 
-        public void GenerateCuttingListOverallReport(List<Order> orders)
+        public void GenerateCuttingListOverallReport(List<IOrder> orders)
         {
             Console.WriteLine("");
             Console.WriteLine($"{Constants.OverallCuttingListHasBeenGenerated} : {DateTime.Today}");
@@ -119,7 +119,7 @@ namespace ToyFactoryLibrary
                 $"{Constants.Column}{Constants.CirclesText}   {Constants.Column} {orders.Sum(c => c.ToyBlocksList.TotalCircles)}  {Constants.Column}");
         }
 
-        public void GeneratePaintingListOverallReport(List<Order> orders)
+        public void GeneratePaintingListOverallReport(List<IOrder> orders)
         {
             Console.WriteLine("");
             Console.WriteLine($"{Constants.OverallPaintingReportHasBeenGenerated} : {DateTime.Today}");
