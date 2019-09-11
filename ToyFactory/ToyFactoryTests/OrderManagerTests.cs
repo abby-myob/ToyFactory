@@ -12,7 +12,7 @@ namespace ToyFactoryTests
 {
     public class OrderManagerTests
     {
-        public Mock<IResponseManager> CreateResponseFake()
+        private static Mock<IResponseManager> CreateResponseFake()
         {
             var values = new[] {1, 0, 0, 2, 0, 0, 1, 0, 0};
 
@@ -104,7 +104,7 @@ namespace ToyFactoryTests
             // Assert
             Assert.True(order.OrderNumber == 2);
         }
-        
+
         [Theory]
         [InlineData("Gerard", 2)]
         [InlineData("Abby", 0)]
@@ -123,16 +123,22 @@ namespace ToyFactoryTests
         }
 
         [Theory]
-        [InlineData("20 Jun 2019", "20 Jun 2019", 2)]
-        public void search_results_for_date(DateTime date, DateTime date2, int expected)
+        [InlineData("20 June 2019", "20 June 2019", 2)]
+        [InlineData("19 June 2019", "21 June 2019", 2)]
+        [InlineData("28 June 2019", "30 June 2019", 0)]
+        [InlineData("28 June 2019", "22 June 2019", 0)]
+        public void search_results_for_date(string dateStart, string dateEnd, int expected)
         {
             // Arrange 
             var orderManager = new OrderManager(CreateResponseFake().Object);
             orderManager.CollectOrder();
             orderManager.CollectOrder();
 
+            var date1 = Convert.ToDateTime(dateStart);
+            var date2 = Convert.ToDateTime(dateEnd);
+
             // Act
-            var orders = orderManager.SearchOrderByDueDate(Convert.ToDateTime(date), Convert.ToDateTime(date2));
+            var orders = orderManager.SearchOrderByDueDate(date1, date2);
 
             // Assert 
             Assert.Equal(expected, orders.Count());

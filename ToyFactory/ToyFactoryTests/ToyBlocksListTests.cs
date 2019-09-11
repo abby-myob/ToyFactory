@@ -20,6 +20,20 @@ namespace ToyFactoryTests
             // Assert
             Assert.Equal(square.Colour, toyBlocksList.ToyBlocks[0].Colour);
         }
+        [Fact]
+        public void test_removing_block_from_the_toyBlocksList_in_object()
+        {
+            // Arrange
+            var square = new Square(Colour.Blue);
+            var toyBlocksList = new ToyBlocksList();
+            toyBlocksList.ToyBlocks.Add(square);
+
+            // Act
+            toyBlocksList.Remove(square);
+
+            // Assert
+            Assert.Empty(toyBlocksList.ToyBlocks);
+        }
 
         [Fact]
         public void check_all_variables_are_updated_in_toyblocks()

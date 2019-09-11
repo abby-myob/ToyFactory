@@ -55,6 +55,14 @@ namespace ToyFactoryLibrary
             max = ResponseManager.GetYellowCircles();
             for (var i = 0; i < max; i++) ToyBlocksList.Add(new Circle(Colour.Yellow));
         }
+        
+        public void AddBlocksToOrder(IEnumerable<IToyBlock> blocks)
+        {
+            foreach (var toyBlock in blocks)
+            {
+                ToyBlocksList.Add(toyBlock);
+            }
+        }
 
         public void EditName(string newName)
         {
@@ -69,14 +77,6 @@ namespace ToyFactoryLibrary
         public void EditDueDate(in DateTime dueDate)
         {
             DueDate = dueDate;
-        }
-
-        public void AddBlocksToOrder(List<IToyBlock> blocks)
-        {
-            foreach (var toyBlock in blocks)
-            {
-                ToyBlocksList.Add(toyBlock);
-            }
         }
     }
 }

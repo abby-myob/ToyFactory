@@ -47,6 +47,12 @@ namespace ToyFactoryLibrary
             ToyBlocks.Add(block);
             UpdateProperties();
         }
+        
+        public void Remove(IToyBlock block)
+        {
+            ToyBlocks.Remove(block);
+            UpdateProperties();
+        }
 
         public void UpdateProperties()
         {
@@ -59,11 +65,13 @@ namespace ToyFactoryLibrary
             RedCircles = ToyBlocks.Where(x => x is Circle).Count(x => x.Colour == Colour.Red);
             BlueCircles = ToyBlocks.Where(x => x is Circle).Count(x => x.Colour == Colour.Blue);
             YellowCircles = ToyBlocks.Where(x => x is Circle).Count(x => x.Colour == Colour.Yellow);
-            
+
             TotalSquares = ToyBlocks.Count(x => x is Square);
             TotalTriangles = ToyBlocks.Count(x => x is Triangle);
             TotalCircles = ToyBlocks.Count(x => x is Circle);
             TotalRedBlocks = ToyBlocks.Count(x => x.Colour == Colour.Red);
         }
+
+
     }
 }

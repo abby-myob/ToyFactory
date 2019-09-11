@@ -60,7 +60,7 @@ namespace ToyFactoryLibrary
 
         public IEnumerable<IOrder> SearchOrderByDueDate(DateTime startDate, DateTime endDate)
         {
-            return Orders.Where(o => o.DueDate.CompareTo(endDate) >= o.DueDate.CompareTo(startDate));
+            return Orders.Where(o => o.DueDate.CompareTo(endDate) <= 0 ).Where(o => o.DueDate.CompareTo(startDate) >= 0);
         }
 
         public void DeleteOrderByOrderNumber(int orderNumber)
