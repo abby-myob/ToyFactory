@@ -8,7 +8,7 @@ namespace ToyFactoryLibrary
 {
     public class ToyBlocksList : IToyBlocksList
     {
-        public List<IToyBlock> ToyBlocks { get; private set; }
+        public List<IToyBlock> ToyBlocks { get; }
         public int RedSquares { get; private set; }
         public int BlueSquares { get; private set; }
         public int YellowSquares { get; private set; }
@@ -45,6 +45,7 @@ namespace ToyFactoryLibrary
         public void Add(IToyBlock block)
         {
             ToyBlocks.Add(block);
+            UpdateProperties();
         }
 
         public void UpdateProperties()

@@ -110,7 +110,7 @@ namespace ToyFactoryTests
             // Assert
             for (var i = 0; i < order.ToyBlocksList.ToyBlocks.Count; i++)
             {
-                Assert.Equal(expected[i].GetType(), order.ToyBlocksList.ToyBlocks[0].GetType());
+                Assert.Equal(expected[i].GetType(), order.ToyBlocksList.ToyBlocks[i].GetType());
                 Assert.Equal(expected[i].Colour, order.ToyBlocksList.ToyBlocks[i].Colour);
             }
         }

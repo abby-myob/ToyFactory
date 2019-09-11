@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using CsvHelper;
-using ToyFactoryLibrary;
-using ToyFactoryLibrary.Blocks;
-using ToyFactoryLibrary.Enums;
 using ToyFactoryLibrary.Interfaces;
 
 namespace ToyFactoryCSVApplication
@@ -28,10 +25,10 @@ namespace ToyFactoryCSVApplication
                 {
                     var records = new List<IOrder>
                     {
-                        new Order("Abby", "20 June St", DateTime.Now, 10, new ConsoleResponseManager())
-                        {
-                            ToyBlocks = { new Circle(Colour.Red)}
-                        }
+//                        new Order("Abby", "20 June St", DateTime.Now, 10, new ConsoleResponseManager())
+//                        {
+//                            ToyBlocks = { new Circle(Colour.Red)}
+//                        }
                     };
                     csv2.WriteRecords(records);
                     foreach (var food in records)

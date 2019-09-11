@@ -27,8 +27,8 @@ namespace ToyFactoryLibrary
 
             Orders.Add(order);
             CurrentOrderNumber++;
-        }
-
+        }  
+         
         public void GenerateReports(int orderNumber)
         {
             var order = Orders.Find(o => o.OrderNumber == orderNumber);
