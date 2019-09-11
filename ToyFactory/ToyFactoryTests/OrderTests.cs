@@ -37,7 +37,7 @@ namespace ToyFactoryTests
                 },
                 new object[]
                 {
-                    new List<IToyBlock>() {},
+                    new List<IToyBlock>() { },
                     new[] {0, 0, 0, 0, 0, 0, 0, 0, 0}
                 },
                 new object[]
@@ -54,7 +54,7 @@ namespace ToyFactoryTests
                         new Circle(Colour.Blue),
                         new Circle(Colour.Yellow),
                     },
-                    new[] {1,1,1,1,1,1,1,1,1}
+                    new[] {1, 1, 1, 1, 1, 1, 1, 1, 1}
                 },
                 new object[]
                 {
@@ -82,7 +82,7 @@ namespace ToyFactoryTests
                         new Circle(Colour.Yellow),
                         new Circle(Colour.Yellow),
                     },
-                    new[] {2,2,3,2,2,3,2,2,3}
+                    new[] {2, 2, 3, 2, 2, 3, 2, 2, 3}
                 }
             };
 
@@ -117,6 +117,9 @@ namespace ToyFactoryTests
 
         [Theory]
         [InlineData("Abby", "Thomas")]
+        [InlineData("Abby", "Abby")]
+        [InlineData("Thomas", "Gertrude")]
+        [InlineData("Gertrude ", "Gertrude")]
         public void create_order_and_test_editing_of_Name(string name, string expected)
         {
             // Arrange
@@ -124,10 +127,55 @@ namespace ToyFactoryTests
 
             // Act
             order.EditName(expected);
-            
+
             // Assert
             Assert.Equal(expected, order.Name);
+        }
 
+        [Theory]
+        [InlineData("20 Dairy Lane", "18 Dairy Lane")]
+        [InlineData("20 Dairy Lane", "20 Lane Lane")]
+        [InlineData("20 Dairy Lane", "18 Dairy Road")]
+        public void create_order_and_test_editing_of_Address(string address, string expected)
+        {
+            // Arrange
+            var order = new Order("jane", address, DateTime.Now, 1, new ConsoleResponseManager(), new ToyBlocksList());
+
+            // Act
+            order.EditAddress(expected);
+
+            // Assert
+            Assert.Equal(expected, order.Address);
+        }
+
+        [Fact]
+        public void create_order_and_test_editing_of_DueDate()
+        {
+            // Arrange
+            var order = new Order("jane", "20 Dairy Road", DateTime.Now, 1, new ConsoleResponseManager(),
+                new ToyBlocksList());
+
+            // Act
+            order.EditDueDate(DateTime.Today);
+
+            // Assert
+            Assert.Equal(DateTime.Today, order.DueDate);
+        }
+
+        [Fact]
+        public void create_order_and_test_adding_of_ToyBlocks_to_ToyBlocksList()
+        {
+            // Arrange
+            var fakeToyBlocksList = new ToyBlocksList();
+
+            var order = new Order("jane", "20 Dairy Road", DateTime.Now, 1, new ConsoleResponseManager(),
+                fakeToyBlocksList);
+
+            // Act
+            order.AddBlocksToOrder(new List<IToyBlock> {new Circle(Colour.Red), new Circle(Colour.Red)});
+
+            // Assert
+            Assert.Equal(2,fakeToyBlocksList.RedCircles);
         }
     }
 }
