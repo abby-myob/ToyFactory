@@ -42,7 +42,16 @@ namespace ToyFactoryCSVApplication
         private static void WriteToCsv(OrderManager orderManager)
         {
             var columnNames = new[]
-                {"Name", "Address", "Due Date", "Order Number", "Squares", "Triangles", "Circles", "Red Surcharge"};
+                {
+                    Constants.ColumnName, 
+                    Constants.ColumnAddress, 
+                    Constants.ColumnDueDate, 
+                    Constants.ColumnOrderNumber, 
+                    Constants.SquaresText, 
+                    Constants.TrianglesText, 
+                    Constants.CirclesText, 
+                    Constants.RedColourSurchargeText
+                };
             var orders = new List<string[]>();
 
             foreach (var order in orderManager.Orders)

@@ -1,5 +1,6 @@
 using System;
 using Csv;
+using ToyFactoryLibrary;
 using ToyFactoryLibrary.Interfaces;
 
 namespace ToyFactoryCSVApplication
@@ -10,17 +11,17 @@ namespace ToyFactoryCSVApplication
 
         public string GetName()
         {
-            return Line["Name"];
+            return Line[Constants.ColumnName];
         }
 
         public string GetAddress()
         {
-            return Line["Address"];
+            return Line[Constants.ColumnAddress];
         }
 
         public DateTime GetDueDate()
         {
-            return Convert.ToDateTime(Line["DueDate"]);
+            return Convert.ToDateTime(Line[Constants.ColumnDueDate]);
         }
 
         private int ReadString(string toy)
@@ -31,17 +32,17 @@ namespace ToyFactoryCSVApplication
 
         public int GetRedSquares()
         {
-            return ReadString("red squares");
+            return ReadString(Constants.ColumnRedSquares);
         }
 
         public int GetBlueSquares()
         {
-            return ReadString("blue squares");
+            return ReadString(Constants.ColumnBlueSquares);
         }
 
         public int GetYellowSquares()
         {
-            return ReadString("yellow squares");
+            return ReadString(Constants.ColumnYellowSquares);
         }
 
         public int GetRedTriangles()

@@ -51,5 +51,21 @@ namespace ToyFactoryLibrary
         public const string RowWithColoursLine = " | ---------- | ----- | ------ | -------- | ";
         public const string RowWithQty =         " |            | Qty  | ";
         public const string RowWithQtyLine =     " | ---------- | ---- | ";
+
+
+        public const string ColumnName = "Name";
+        public const string ColumnAddress = "Address";
+        public const string ColumnDueDate = "Due Date";
+        public const string ColumnOrderNumber = "OrderNumber";
+        public const string ColumnRedSquares = "Red Squares";
+        public const string ColumnBlueSquares = "Blue Squares";
+        public const string ColumnYellowSquares = "Yellow Squares";
+        public const string ColumnRedTriangles = "Red Triangles";
+        public const string ColumnBlueTriangles = "Blue Triangles";
+        public const string ColumnYellowTriangles = "Yellow Triangles";
+        public const string ColumnRedCircles = "Red Circles";
+        public const string ColumnBlueCircles = "Blue Circles";
+        public const string ColumnYellowCircles = "Yellow Circles";
+
     }
 }
