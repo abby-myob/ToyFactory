@@ -101,7 +101,7 @@ namespace ToyFactoryTests
             fakeResponse.Setup(f => f.GetBlueCircles()).Returns(values[7]);
             fakeResponse.Setup(f => f.GetYellowCircles()).Returns(values[8]);
 
-            // Arrange  what th4 f*k
+            // Arrange   
             var order = new Order("A", "4", DateTime.Now, 0001, fakeResponse.Object, new ToyBlocksList());
 
             // Act 
@@ -113,6 +113,13 @@ namespace ToyFactoryTests
                 Assert.Equal(expected[i].GetType(), order.ToyBlocksList.ToyBlocks[i].GetType());
                 Assert.Equal(expected[i].Colour, order.ToyBlocksList.ToyBlocks[i].Colour);
             }
+        }
+
+        [Theory]
+        [InlineData("Abby", "Thomas")]
+        public void create_order_and_test_editing_of_Name(string name, string expected)
+        {
+            // Arrange
         }
     }
 }
