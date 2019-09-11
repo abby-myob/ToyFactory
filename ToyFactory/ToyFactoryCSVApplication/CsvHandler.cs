@@ -13,8 +13,8 @@ namespace ToyFactoryCSVApplication
         public CsvHandler(OrderManager orderManager)
         {
             OrderManager = orderManager;
-        }
-
+        } 
+        
         public void ReadCsv(string path)
         {
             var csvReader = File.ReadAllText(path);
@@ -37,7 +37,7 @@ namespace ToyFactoryCSVApplication
                 {
                     order.Name,
                     order.Address,
-                    order.DueDate.ToString(CultureInfo.InvariantCulture),
+                    order.DueDate.ToString("dd-MMM-yy", CultureInfo.InvariantCulture),
                     order.OrderNumber.ToString(),
                     $"${order.ToyBlocksList.TotalSquares * Constants.SquarePrice}",
                     $"${order.ToyBlocksList.TotalTriangles * Constants.TrianglePrice}",
@@ -63,7 +63,7 @@ namespace ToyFactoryCSVApplication
                 {
                     order.Name,
                     order.Address,
-                    order.DueDate.ToString(CultureInfo.InvariantCulture),
+                    order.DueDate.ToString("dd-MMM-yy", CultureInfo.InvariantCulture),
                     order.OrderNumber.ToString(),
                     order.ToyBlocksList.TotalSquares.ToString(),
                     order.ToyBlocksList.TotalTriangles.ToString(),
@@ -88,7 +88,7 @@ namespace ToyFactoryCSVApplication
                 {
                     order.Name,
                     order.Address,
-                    order.DueDate.ToString(CultureInfo.InvariantCulture),
+                    order.DueDate.ToString("dd-MMM-yy", CultureInfo.InvariantCulture),
                     order.OrderNumber.ToString(),
                     order.ToyBlocksList.RedSquares.ToString(),
                     order.ToyBlocksList.BlueSquares.ToString(),

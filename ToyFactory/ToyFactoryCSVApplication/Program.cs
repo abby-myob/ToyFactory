@@ -1,5 +1,4 @@
-﻿using ToyFactoryConsole;
-using ToyFactoryLibrary;
+﻿using ToyFactoryLibrary;
 
 namespace ToyFactoryCSVApplication
 {
