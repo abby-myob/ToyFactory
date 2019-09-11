@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using Csv;
+using ToyFactoryConsole;
 using ToyFactoryLibrary; 
 
 namespace ToyFactoryCSVApplication
@@ -11,34 +14,55 @@ namespace ToyFactoryCSVApplication
         {
             Console.WriteLine(Constants.Welcome);
             
-            var orderManager = new OrderManager(new CsvResponseManager(), new CsvReportGenerator()); 
+            var orderManager = new OrderManager(new CsvResponseManager(), new ConsoleReportGenerator()); 
             
-            var csvReader = File.ReadAllText("/Users/abby.thompson/Development/ToyFactory/Input");
+            ReadCsv(orderManager);
             
-            foreach (var line in CsvReader.ReadFromText(csvReader))
+            foreach (var order in orderManager.Orders)
             { 
+                orderManager.GenerateReports(order.OrderNumber);
+            }
+            
+            //TODO change the due date date time format bro. and clean everything up! BEFORE MIDDAY 
+
+            WriteToCsv(orderManager);
+        }
+
+        private static void ReadCsv(OrderManager orderManager)
+        {
+            var csvReader = File.ReadAllText("/Users/abby.thompson/Development/ToyFactory/Input");
+
+            foreach (var line in CsvReader.ReadFromText(csvReader))
+            {
                 orderManager.ResponseManager.Line = line;
                 orderManager.CollectOrder();
             }
+        }
+
+        private static void WriteToCsv(OrderManager orderManager)
+        {
+            var columnNames = new[]
+                {"Name", "Address", "Due Date", "Order Number", "Squares", "Triangles", "Circles", "Red Surcharge"};
+            var orders = new List<string[]>();
 
             foreach (var order in orderManager.Orders)
             {
-                Console.WriteLine(order.Name);
-                Console.WriteLine(order.Address);
-                Console.WriteLine(order.DueDate);
-                Console.WriteLine(order.OrderNumber);
-                Console.WriteLine(order.ToyBlocksList);
+                var info = new[]
+                {
+                    order.Name,
+                    order.Address,
+                    order.DueDate.ToString(CultureInfo.InvariantCulture),
+                    order.OrderNumber.ToString(),
+                    $"${order.ToyBlocksList.TotalSquares * Constants.SquarePrice}",
+                    $"${order.ToyBlocksList.TotalTriangles * Constants.TrianglePrice}",
+                    $"${order.ToyBlocksList.TotalCircles * Constants.CirclePrice}",
+                    $"${order.ToyBlocksList.TotalRedBlocks * Constants.RedColourSurcharge}"
+                };
+                orders.Add(info);
             }
-            
-            // TODO print all to csv file
-            
-            var columnNames = new [] { "Id", "Name" };
-            var rows = new [] 
-            {
-                new [] { "0", "John Doe" },
-                new [] { "1", "Jane Doe" }
-            };
-            var csvWriter = CsvWriter.WriteToText(columnNames, rows, ',');
+
+            orders.ToArray();
+            var csvWriter = CsvWriter.WriteToText(columnNames, orders, ',');
             File.WriteAllText("/Users/abby.thompson/Development/ToyFactory/Output", csvWriter);
         }
     }

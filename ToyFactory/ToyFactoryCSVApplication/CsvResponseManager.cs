@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Csv;
 using ToyFactoryLibrary.Interfaces;
 
@@ -23,7 +22,7 @@ namespace ToyFactoryCSVApplication
         {
             return Convert.ToDateTime(Line["DueDate"]);
         }
-        
+
         private int ReadString(string toy)
         {
             var line = Line[toy];
@@ -73,31 +72,6 @@ namespace ToyFactoryCSVApplication
         public int GetYellowCircles()
         {
             return ReadString("yellow circles");
-        }
-
-        public void GenerateInvoice(IOrder order)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GenerateCuttingListReport(IOrder order)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GeneratePaintingReport(IOrder order)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GenerateCuttingListOverallReport(List<IOrder> orders)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GeneratePaintingListOverallReport(List<IOrder> orders)
-        {
-            throw new NotImplementedException();
         }
     }
 }

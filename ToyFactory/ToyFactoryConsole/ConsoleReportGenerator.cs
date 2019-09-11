@@ -88,7 +88,7 @@ namespace ToyFactoryConsole
             Console.WriteLine(
                 $"{Constants.TrianglesText}                  {order.ToyBlocksList.TotalTriangles} @ ${Constants.TrianglePrice} {Constants.PPIText} ${order.ToyBlocksList.TotalTriangles * Constants.TrianglePrice}");
             Console.WriteLine(
-                $"{Constants.CirclesText}                    {order.ToyBlocksList.TotalCircles} @ ${Constants.SquarePrice} {Constants.PPIText} ${order.ToyBlocksList.TotalCircles * Constants.CirclePrice}");
+                $"{Constants.CirclesText}                    {order.ToyBlocksList.TotalCircles} @ ${Constants.CirclePrice} {Constants.PPIText} ${order.ToyBlocksList.TotalCircles * Constants.CirclePrice}");
             Console.WriteLine(
                 $"{Constants.RedColourSurchargeText}       {order.ToyBlocksList.TotalRedBlocks} @ ${Constants.RedColourSurcharge} {Constants.PPIText} ${order.ToyBlocksList.TotalRedBlocks * Constants.RedColourSurcharge}");
         }
