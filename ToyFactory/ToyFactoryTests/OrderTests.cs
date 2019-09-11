@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Moq;
+using ToyFactoryConsole;
 using ToyFactoryLibrary;
 using ToyFactoryLibrary.Blocks;
 using ToyFactoryLibrary.Enums;
@@ -176,6 +177,6 @@ namespace ToyFactoryTests
 
             // Assert
             Assert.Equal(2,fakeToyBlocksList.RedCircles);
-        }
+        } 
     }
 }

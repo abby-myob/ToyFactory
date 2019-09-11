@@ -1,41 +1,45 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using CsvHelper;
-using ToyFactoryLibrary.Interfaces;
+using Csv;
+using ToyFactoryLibrary; 
 
 namespace ToyFactoryCSVApplication
 {
     internal static class Program
     {
         private static void Main()
-        { 
-                using (var reader = new StreamReader("/Users/abby.thompson/Development/ToyFactory/Input"))
-                using (var csv = new CsvReader(reader))
-                {
-                    var records = csv.GetRecords<IOrder>();
-                    foreach (var food in records)
-                    {
-                        Console.WriteLine(food);
-                    }
-                }
-                
-                using (var writer = new StreamWriter("/Users/abby.thompson/Development/ToyFactory/Output"))
-                using (var csv2 = new CsvWriter(writer))
-                {
-                    var records = new List<IOrder>
-                    {
-//                        new Order("Abby", "20 June St", DateTime.Now, 10, new ConsoleResponseManager())
-//                        {
-//                            ToyBlocks = { new Circle(Colour.Red)}
-//                        }
-                    };
-                    csv2.WriteRecords(records);
-                    foreach (var food in records)
-                    {
-                        Console.WriteLine(food);
-                    }
-                } 
-        }  
-    } 
+        {
+            Console.WriteLine(Constants.Welcome);
+            
+            var orderManager = new OrderManager(new CsvResponseManager(), new CsvReportGenerator()); 
+            
+            var csvReader = File.ReadAllText("/Users/abby.thompson/Development/ToyFactory/Input");
+            
+            foreach (var line in CsvReader.ReadFromText(csvReader))
+            { 
+                orderManager.ResponseManager.Line = line;
+                orderManager.CollectOrder();
+            }
+
+            foreach (var order in orderManager.Orders)
+            {
+                Console.WriteLine(order.Name);
+                Console.WriteLine(order.Address);
+                Console.WriteLine(order.DueDate);
+                Console.WriteLine(order.OrderNumber);
+                Console.WriteLine(order.ToyBlocksList);
+            }
+            
+            // TODO print all to csv file
+            
+            var columnNames = new [] { "Id", "Name" };
+            var rows = new [] 
+            {
+                new [] { "0", "John Doe" },
+                new [] { "1", "Jane Doe" }
+            };
+            var csvWriter = CsvWriter.WriteToText(columnNames, rows, ',');
+            File.WriteAllText("/Users/abby.thompson/Development/ToyFactory/Output", csvWriter);
+        }
+    }
 }

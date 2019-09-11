@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Moq;
+using ToyFactoryConsole;
 using ToyFactoryLibrary;
 using ToyFactoryLibrary.Blocks;
 using ToyFactoryLibrary.Enums;
@@ -39,7 +40,7 @@ namespace ToyFactoryTests
         public void Collect_order_test_it_generates_the_right_order()
         {
             // Arrange 
-            var orderManager = new OrderManager(CreateResponseFake().Object);
+            var orderManager = new OrderManager(CreateResponseFake().Object, new ConsoleReportGenerator());
             var expected = new List<IToyBlock>
             {
                 new Square(Colour.Red),
@@ -73,7 +74,7 @@ namespace ToyFactoryTests
         public void Should_increase_the_order_number_per_order(int num)
         {
             // Arrange 
-            var orderManager = new OrderManager(CreateResponseFake().Object);
+            var orderManager = new OrderManager(CreateResponseFake().Object, new ConsoleReportGenerator());
 
             // Act
             for (var i = 0; i < num; i++)
@@ -92,7 +93,7 @@ namespace ToyFactoryTests
         public void search_results_for_order_number()
         {
             // Arrange 
-            var orderManager = new OrderManager(CreateResponseFake().Object);
+            var orderManager = new OrderManager(CreateResponseFake().Object, new ConsoleReportGenerator());
             orderManager.CollectOrder();
             orderManager.CollectOrder();
             orderManager.CollectOrder();
@@ -111,7 +112,7 @@ namespace ToyFactoryTests
         public void search_results_for_person(string name, int expected)
         {
             // Arrange 
-            var orderManager = new OrderManager(CreateResponseFake().Object);
+            var orderManager = new OrderManager(CreateResponseFake().Object, new ConsoleReportGenerator());
             orderManager.CollectOrder();
             orderManager.CollectOrder();
 
@@ -130,7 +131,7 @@ namespace ToyFactoryTests
         public void search_results_for_date(string dateStart, string dateEnd, int expected)
         {
             // Arrange 
-            var orderManager = new OrderManager(CreateResponseFake().Object);
+            var orderManager = new OrderManager(CreateResponseFake().Object, new ConsoleReportGenerator());
             orderManager.CollectOrder();
             orderManager.CollectOrder();
 
@@ -148,7 +149,7 @@ namespace ToyFactoryTests
         public void delete_order_by_order_number()
         {
             // Arrange 
-            var orderManager = new OrderManager(CreateResponseFake().Object);
+            var orderManager = new OrderManager(CreateResponseFake().Object, new ConsoleReportGenerator());
             orderManager.CollectOrder();
             orderManager.CollectOrder();
 

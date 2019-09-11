@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using ToyFactoryLibrary.Blocks;
@@ -46,13 +47,7 @@ namespace ToyFactoryLibrary
         {
             ToyBlocks.Add(block);
             UpdateProperties();
-        }
-        
-        public void Remove(IToyBlock block)
-        {
-            ToyBlocks.Remove(block);
-            UpdateProperties();
-        }
+        } 
 
         public void UpdateProperties()
         {

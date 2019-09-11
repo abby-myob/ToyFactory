@@ -7,14 +7,16 @@ namespace ToyFactoryLibrary
 {
     public class OrderManager
     {
-        private IResponseManager ResponseManager { get; }
+        public IResponseManager ResponseManager { get; }
+        public IReportGenerator ReportGenerator { get; }
         public List<IOrder> Orders { get; }
         private int CurrentOrderNumber { get; set; }
 
-        public OrderManager(IResponseManager responseManager)
+        public OrderManager(IResponseManager responseManager, IReportGenerator reportGenerator)
         {
             CurrentOrderNumber = 1;
             ResponseManager = responseManager;
+            ReportGenerator = reportGenerator;
             Orders = new List<IOrder>();
         }
 
@@ -34,18 +36,18 @@ namespace ToyFactoryLibrary
         public void GenerateReports(int orderNumber)
         {
             var order = SearchByOrderNumber(orderNumber);
-            ResponseManager.GenerateInvoice(order);
-            ResponseManager.GenerateCuttingListReport(order);
-            ResponseManager.GeneratePaintingReport(order);
+            ReportGenerator.GenerateInvoice(order);
+            ReportGenerator.GenerateCuttingListReport(order);
+            ReportGenerator.GeneratePaintingReport(order);
         }
 
         public void GenerateCuttingListOverallReport()
         {
-            ResponseManager.GenerateCuttingListOverallReport(Orders);
+            ReportGenerator.GenerateCuttingListOverallReport(Orders);
         }
         public void GeneratePaintingOverallReport()
         { 
-            ResponseManager.GeneratePaintingListOverallReport(Orders);
+            ReportGenerator.GeneratePaintingListOverallReport(Orders);
         }
 
         public IOrder SearchByOrderNumber(int orderNumber)

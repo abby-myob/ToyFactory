@@ -1,72 +1,80 @@
 using System;
 using System.Collections.Generic;
+using Csv;
 using ToyFactoryLibrary.Interfaces;
 
-namespace ToyFactoryLibrary
+namespace ToyFactoryCSVApplication
 {
     public class CsvResponseManager : IResponseManager
     {
+        public ICsvLine Line { get; set; }
+
         public string GetName()
         {
-            throw new NotImplementedException();
+            return Line["Name"];
         }
 
         public string GetAddress()
         {
-            throw new NotImplementedException();
+            return Line["Address"];
         }
 
         public DateTime GetDueDate()
         {
-            throw new NotImplementedException();
+            return Convert.ToDateTime(Line["DueDate"]);
         }
         
+        private int ReadString(string toy)
+        {
+            var line = Line[toy];
+            return line == "" ? 0 : Convert.ToInt32(line);
+        }
+
         public int GetRedSquares()
         {
-            throw new NotImplementedException();
+            return ReadString("red squares");
         }
 
         public int GetBlueSquares()
         {
-            throw new NotImplementedException();
+            return ReadString("blue squares");
         }
 
         public int GetYellowSquares()
         {
-            throw new NotImplementedException();
+            return ReadString("yellow squares");
         }
 
         public int GetRedTriangles()
         {
-            throw new NotImplementedException();
+            return ReadString("red triangles");
         }
 
         public int GetBlueTriangles()
         {
-            throw new NotImplementedException();
+            return ReadString("blue triangles");
         }
 
         public int GetYellowTriangles()
         {
-            throw new NotImplementedException();
+            return ReadString("yellow triangles");
         }
 
         public int GetRedCircles()
         {
-            throw new NotImplementedException();
+            return ReadString("red circles");
         }
 
         public int GetBlueCircles()
         {
-            throw new NotImplementedException();
+            return ReadString("blue circles");
         }
 
         public int GetYellowCircles()
         {
-            throw new NotImplementedException();
+            return ReadString("yellow circles");
         }
 
-        
         public void GenerateInvoice(IOrder order)
         {
             throw new NotImplementedException();
@@ -84,12 +92,12 @@ namespace ToyFactoryLibrary
 
         public void GenerateCuttingListOverallReport(List<IOrder> orders)
         {
-             
+            throw new NotImplementedException();
         }
 
         public void GeneratePaintingListOverallReport(List<IOrder> orders)
         {
-             
+            throw new NotImplementedException();
         }
     }
 }

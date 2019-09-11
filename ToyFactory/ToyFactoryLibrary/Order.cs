@@ -77,6 +77,6 @@ namespace ToyFactoryLibrary
         public void EditDueDate(in DateTime dueDate)
         {
             DueDate = dueDate;
-        }
+        } 
     }
 }
