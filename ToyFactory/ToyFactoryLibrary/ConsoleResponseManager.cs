@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using ToyFactoryLibrary.Interfaces;
 
 namespace ToyFactoryLibrary
@@ -19,7 +21,7 @@ namespace ToyFactoryLibrary
 
         public DateTime GetDueDate()
         {
-            Console.Write(Constants.InputDueDate); 
+            Console.Write(Constants.InputDueDate);
             return Convert.ToDateTime(Console.ReadLine());
         }
 
@@ -98,8 +100,50 @@ namespace ToyFactoryLibrary
             Console.WriteLine("");
             Console.WriteLine(Constants.PaintingReportHasBeenGenerated);
             Console.WriteLine("");
-            PrintOrderHeader(order); 
+            PrintOrderHeader(order);
             PrintToyBlockTable(order);
+        }
+
+        public void GenerateCuttingListOverallReport(List<Order> orders)
+        {
+            Console.WriteLine("");
+            Console.WriteLine($"{Constants.OverallCuttingListHasBeenGenerated} : {DateTime.Today}");
+            Console.WriteLine("");
+            Console.WriteLine(Constants.RowWithQty);
+            Console.WriteLine(Constants.RowWithQtyLine);
+            Console.WriteLine(
+                $"{Constants.Column}{Constants.SquaresText}   {Constants.Column} {orders.Sum(c => c.ToyBlocksList.TotalSquares)}  {Constants.Column}");
+            Console.WriteLine(
+                $"{Constants.Column}{Constants.TrianglesText} {Constants.Column} {orders.Sum(c => c.ToyBlocksList.TotalTriangles)}  {Constants.Column}");
+            Console.WriteLine(
+                $"{Constants.Column}{Constants.CirclesText}   {Constants.Column} {orders.Sum(c => c.ToyBlocksList.TotalCircles)}  {Constants.Column}");
+        }
+
+        public void GeneratePaintingListOverallReport(List<Order> orders)
+        {
+            Console.WriteLine("");
+            Console.WriteLine($"{Constants.OverallPaintingReportHasBeenGenerated} : {DateTime.Today}");
+            Console.WriteLine("");
+            Console.WriteLine(Constants.RowWithColours);
+            Console.WriteLine(Constants.RowWithColoursLine);
+            Console.WriteLine(
+                $"{Constants.Column}{Constants.SquaresText}   " +
+                $"{Constants.Column} {orders.Sum(c => c.ToyBlocksList.RedSquares)}   " +
+                $"{Constants.Column} {orders.Sum(c => c.ToyBlocksList.BlueSquares)}    " +
+                $"{Constants.Column} {orders.Sum(c => c.ToyBlocksList.YellowSquares)}      " +
+                $"{Constants.Column}");
+            Console.WriteLine(
+                $"{Constants.Column}{Constants.TrianglesText} " +
+                $"{Constants.Column} {orders.Sum(c => c.ToyBlocksList.RedTriangles)}   " +
+                $"{Constants.Column} {orders.Sum(c => c.ToyBlocksList.BlueTriangles)}    " +
+                $"{Constants.Column} {orders.Sum(c => c.ToyBlocksList.YellowTriangles)}      " +
+                $"{Constants.Column}");
+            Console.WriteLine(
+                $"{Constants.Column}{Constants.CirclesText}   " +
+                $"{Constants.Column} {orders.Sum(c => c.ToyBlocksList.RedCircles)}   " +
+                $"{Constants.Column} {orders.Sum(c => c.ToyBlocksList.BlueCircles)}    " +
+                $"{Constants.Column} {orders.Sum(c => c.ToyBlocksList.YellowCircles)}      " +
+                $"{Constants.Column}");
         }
 
         public void GenerateInvoice(IOrder order)
@@ -134,21 +178,21 @@ namespace ToyFactoryLibrary
             Console.WriteLine(Constants.RowWithColoursLine);
             Console.WriteLine(
                 $"{Constants.Column}{Constants.SquaresText}   " +
-                $"{Constants.Column} {order.ToyBlocksList.RedTriangles}   " +
-                $"{Constants.Column} {order.ToyBlocksList.RedTriangles}    " +
-                $"{Constants.Column} {order.ToyBlocksList.RedTriangles}      " +
+                $"{Constants.Column} {order.ToyBlocksList.RedSquares}   " +
+                $"{Constants.Column} {order.ToyBlocksList.BlueSquares}    " +
+                $"{Constants.Column} {order.ToyBlocksList.YellowSquares}      " +
                 $"{Constants.Column}");
             Console.WriteLine(
                 $"{Constants.Column}{Constants.TrianglesText} " +
                 $"{Constants.Column} {order.ToyBlocksList.RedTriangles}   " +
-                $"{Constants.Column} {order.ToyBlocksList.RedTriangles}    " +
-                $"{Constants.Column} {order.ToyBlocksList.RedTriangles}      " +
+                $"{Constants.Column} {order.ToyBlocksList.BlueTriangles}    " +
+                $"{Constants.Column} {order.ToyBlocksList.YellowTriangles}      " +
                 $"{Constants.Column}");
             Console.WriteLine(
                 $"{Constants.Column}{Constants.CirclesText}   " +
-                $"{Constants.Column} {order.ToyBlocksList.RedTriangles}   " +
-                $"{Constants.Column} {order.ToyBlocksList.RedTriangles}    " +
-                $"{Constants.Column} {order.ToyBlocksList.RedTriangles}      " +
+                $"{Constants.Column} {order.ToyBlocksList.RedCircles}   " +
+                $"{Constants.Column} {order.ToyBlocksList.BlueCircles}    " +
+                $"{Constants.Column} {order.ToyBlocksList.YellowCircles}      " +
                 $"{Constants.Column}");
         }
     }

@@ -94,5 +94,29 @@ namespace ToyFactoryTests
                 Assert.Equal(i + 1, orderManager.Orders[i].OrderNumber);
             }
         }
+        
+        [Theory]
+        [InlineData(1)]
+        [InlineData(3)]
+        [InlineData(2)]
+        [InlineData(10)]
+        [InlineData(100)]
+        public void Generate_a_cutting_list_report_per_day(int num)
+        {
+            // Arrange 
+            var orderManager = new OrderManager(CreateResponseFake().Object);
+
+            // Act
+            for (var i = 0; i < num; i++)
+            {
+                orderManager.CollectOrder();
+            }
+
+            // Assert
+            for (var i = 0; i < num; i++)
+            {
+                Assert.Equal(i + 1, orderManager.Orders[i].OrderNumber);
+            }
+        }
     }
 }

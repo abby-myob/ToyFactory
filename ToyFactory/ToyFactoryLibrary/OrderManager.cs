@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using ToyFactoryLibrary.Interfaces;
 
 namespace ToyFactoryLibrary
@@ -35,6 +36,17 @@ namespace ToyFactoryLibrary
             ResponseManager.GenerateInvoice(order);
             ResponseManager.GenerateCuttingListReport(order);
             ResponseManager.GeneratePaintingReport(order);
+        }
+
+        public void GenerateCuttingListOverallReport()
+        {
+            ResponseManager.GenerateCuttingListOverallReport(Orders);
+        }
+        public void GeneratePaintingOverallReport()
+        {
+
+            
+            ResponseManager.GeneratePaintingListOverallReport(Orders);
         }
     }
 }

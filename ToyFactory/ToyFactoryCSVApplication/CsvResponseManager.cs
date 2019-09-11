@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using ToyFactoryLibrary.Interfaces;
 
 namespace ToyFactoryLibrary
@@ -77,6 +78,16 @@ namespace ToyFactoryLibrary
         }
 
         public void GeneratePaintingReport(IOrder order)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GenerateCuttingListOverallReport(List<Order> orders)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GeneratePaintingListOverallReport(List<Order> orders)
         {
             throw new NotImplementedException();
         }

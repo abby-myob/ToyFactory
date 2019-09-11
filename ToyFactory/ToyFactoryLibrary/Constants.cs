@@ -1,9 +1,10 @@
 namespace ToyFactoryLibrary
 {
-    public class Constants
+    public static class Constants
     {
         public const string Welcome = "Welcome to the Toy Block Factory";
-            
+        public const string HowManyOrders = "How many orders are you putting in? ";
+
         public const string InputName = "Please input your Name: ";
         public const string InputAddress = "Please input your Address: ";
         public const string InputDueDate = "Please input your Due Date (DD MMM YYYY): ";
@@ -30,7 +31,9 @@ namespace ToyFactoryLibrary
         public const string InvoiceHasBeenGenerated = "Your invoice report has been generated: ";
         public const string CuttingListHasBeenGenerated = "Your cutting list has been generated: ";
         public const string PaintingReportHasBeenGenerated = "Your painting report has been generated: ";
-        
+        public const string OverallCuttingListHasBeenGenerated = "Your cutting list for today has been generated.";
+        public const string OverallPaintingReportHasBeenGenerated = "Your painting report for today has been generated.";
+
         
         public const string NameText = "Name: ";
         public const string AddressText = "Address: ";
@@ -41,11 +44,7 @@ namespace ToyFactoryLibrary
         public const string TrianglesText = "Triangles";
         public const string CirclesText = "Circles";
         public const string RedColourSurchargeText = "Red Colour Surcharge";
-        public const string PPIText = "ppi =";
-        
-        public const string RedText = "Red";
-        public const string BlueText = "Blue";
-        public const string YellowText = "Yellow";
+        public const string PPIText = "ppi ="; 
 
         public const string Column = " | ";
         public const string RowWithColours =     " |            |  Red  |  Blue  |  Yellow  | ";

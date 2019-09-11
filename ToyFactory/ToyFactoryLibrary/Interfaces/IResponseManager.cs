@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace ToyFactoryLibrary.Interfaces
 {
@@ -19,5 +20,7 @@ namespace ToyFactoryLibrary.Interfaces
         void GenerateInvoice(IOrder order);
         void GenerateCuttingListReport(IOrder order);
         void GeneratePaintingReport(IOrder order);
+        void GenerateCuttingListOverallReport(List<Order> orders);
+        void GeneratePaintingListOverallReport(List<Order> orders);
     }
 }
