@@ -84,15 +84,15 @@ namespace ToyFactoryLibrary
             PrintToyBlockTable(order);
             Console.WriteLine("");
             Console.WriteLine(
-                $"{Constants.SquaresText}                    {order.ToyBlocksList.TotalSquares} @ ${Constants.SquarePrice} {Constants.PPIText} ${order.ToyBlocksList.TotalSquares * Constants.SquarePrice}");
+                $"{Constants.SquaresText}                    {order.ToyBlocksList.TotalSquares} @ ${Constants.SquarePrice} {Constants.PPIText} ${order.SquaresPrice}");
             Console.WriteLine(
-                $"{Constants.TrianglesText}                  {order.ToyBlocksList.TotalTriangles} @ ${Constants.TrianglePrice} {Constants.PPIText} ${order.ToyBlocksList.TotalTriangles * Constants.TrianglePrice}");
+                $"{Constants.TrianglesText}                  {order.ToyBlocksList.TotalTriangles} @ ${Constants.TrianglePrice} {Constants.PPIText} ${order.TrianglesPrice}");
             Console.WriteLine(
-                $"{Constants.CirclesText}                    {order.ToyBlocksList.TotalCircles} @ ${Constants.CirclePrice} {Constants.PPIText} ${order.ToyBlocksList.TotalCircles * Constants.CirclePrice}");
+                $"{Constants.CirclesText}                    {order.ToyBlocksList.TotalCircles} @ ${Constants.CirclePrice} {Constants.PPIText} ${order.CirclesPrice}");
             Console.WriteLine(
-                $"{Constants.RedColourSurchargeText}       {order.ToyBlocksList.TotalRedBlocks} @ ${Constants.RedColourSurcharge} {Constants.PPIText} ${order.ToyBlocksList.TotalRedBlocks * Constants.RedColourSurcharge}");
+                $"{Constants.RedColourSurchargeText}       {order.ToyBlocksList.TotalRedBlocks} @ ${Constants.RedColourSurcharge} {Constants.PPIText} ${order.RedSurchargePrice}");
             Console.WriteLine(
-                $"{Constants.TotalPriceText}                    ${order.ToyBlocksList.TotalSquares * Constants.SquarePrice + order.ToyBlocksList.TotalTriangles * Constants.TrianglePrice + order.ToyBlocksList.TotalCircles * Constants.CirclePrice + order.ToyBlocksList.TotalRedBlocks * Constants.RedColourSurcharge}");
+                $"{Constants.TotalPriceText}                    ${order.TotalPrice}");
         }
 
         private void PrintOrderHeader(IOrder order)
