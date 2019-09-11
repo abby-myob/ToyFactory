@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using ToyFactoryLibrary.Interfaces;
 
@@ -96,7 +97,7 @@ namespace ToyFactoryLibrary
         {
             Console.Write($"{Constants.NameText}{order.Name}  ");
             Console.Write($"{Constants.AddressText}{order.Address}  ");
-            Console.Write($"{Constants.DueDateText}{order.DueDate}  ");
+            Console.Write($"{Constants.DueDateText}{order.DueDate.ToString("dd-MMM-yy", CultureInfo.InvariantCulture)}");
             Console.Write($"{Constants.OrderNumberText}{order.OrderNumber}  \n");
         }
 
