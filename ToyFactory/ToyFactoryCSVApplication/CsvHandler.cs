@@ -39,11 +39,11 @@ namespace ToyFactoryCSVApplication
                     order.Address,
                     order.DueDate.ToString("dd-MMM-yy", CultureInfo.InvariantCulture),
                     order.OrderNumber.ToString(),
-                    $"${order.ToyBlocksList.TotalSquares * Constants.SquarePrice}",
-                    $"${order.ToyBlocksList.TotalTriangles * Constants.TrianglePrice}",
-                    $"${order.ToyBlocksList.TotalCircles * Constants.CirclePrice}",
-                    $"${order.ToyBlocksList.TotalRedBlocks * Constants.RedColourSurcharge}",
-                    $"${order.ToyBlocksList.TotalRedBlocks * Constants.RedColourSurcharge + order.ToyBlocksList.TotalCircles * Constants.CirclePrice + order.ToyBlocksList.TotalTriangles * Constants.TrianglePrice + order.ToyBlocksList.TotalSquares * Constants.SquarePrice}",
+                    $"${order.SquaresPrice}",
+                    $"${order.TrianglesPrice}",
+                    $"${order.CirclesPrice}",
+                    $"${order.RedSurchargePrice}",
+                    $"${order.TotalPrice}",
                 };
                 orders.Add(info);
             }
