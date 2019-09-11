@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using ToyFactoryLibrary.Blocks;
@@ -49,7 +48,7 @@ namespace ToyFactoryLibrary
             UpdateProperties();
         } 
 
-        public void UpdateProperties()
+        private void UpdateProperties()
         {
             RedSquares = ToyBlocks.Where(x => x is Square).Count(x => x.Colour == Colour.Red);
             BlueSquares = ToyBlocks.Where(x => x is Square).Count(x => x.Colour == Colour.Blue);
@@ -65,8 +64,6 @@ namespace ToyFactoryLibrary
             TotalTriangles = ToyBlocks.Count(x => x is Triangle);
             TotalCircles = ToyBlocks.Count(x => x is Circle);
             TotalRedBlocks = ToyBlocks.Count(x => x.Colour == Colour.Red);
-        }
-
-
+        } 
     }
 }

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Csv;
 
 namespace ToyFactoryLibrary.Interfaces
@@ -18,6 +17,6 @@ namespace ToyFactoryLibrary.Interfaces
         int GetRedCircles();
         int GetBlueCircles();
         int GetYellowCircles();
-        ICsvLine Line { get; set; }
+        ICsvLine Line { set; } // TODO how do i not have this bad boy 
     }
 }

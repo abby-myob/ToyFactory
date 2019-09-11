@@ -5,7 +5,7 @@ namespace ToyFactoryLibrary.Blocks
 {
     public class Square : IToyBlock
     {
-        public Colour Colour { get; private set; }
+        public Colour Colour { get; }
 
         public Square(Colour colour)
         {

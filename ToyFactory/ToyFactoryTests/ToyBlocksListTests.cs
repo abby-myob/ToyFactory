@@ -27,6 +27,7 @@ namespace ToyFactoryTests
             // Arrange
             var toyBlocksList = new ToyBlocksList();
 
+            // Act 
             toyBlocksList.Add(new Square(Colour.Red));
             toyBlocksList.Add(new Square(Colour.Yellow));
             toyBlocksList.Add(new Square(Colour.Yellow));
@@ -37,9 +38,6 @@ namespace ToyFactoryTests
             toyBlocksList.Add(new Triangle(Colour.Blue));
             toyBlocksList.Add(new Circle(Colour.Red));
             toyBlocksList.Add(new Circle(Colour.Red));
-            
-            // Act
-            toyBlocksList.UpdateProperties();
 
             // Assert
             Assert.Equal(1, toyBlocksList.RedSquares);

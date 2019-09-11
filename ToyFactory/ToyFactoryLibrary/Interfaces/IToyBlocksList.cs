@@ -18,7 +18,6 @@ namespace ToyFactoryLibrary.Interfaces
         int TotalTriangles { get; }
         int TotalCircles { get; }
         int TotalRedBlocks { get; }
-        void Add(IToyBlock block); 
-        void UpdateProperties();
+        void Add(IToyBlock block);
     }
 }
