@@ -47,32 +47,32 @@ namespace ToyFactoryCSVApplication
 
         public int GetRedTriangles()
         {
-            return ReadString("red triangles");
+            return ReadString(Constants.ColumnRedTriangles);
         }
 
         public int GetBlueTriangles()
         {
-            return ReadString("blue triangles");
+            return ReadString(Constants.ColumnBlueTriangles);
         }
 
         public int GetYellowTriangles()
         {
-            return ReadString("yellow triangles");
+            return ReadString(Constants.ColumnYellowTriangles);
         }
 
         public int GetRedCircles()
         {
-            return ReadString("red circles");
+            return ReadString(Constants.ColumnRedCircles);
         }
 
         public int GetBlueCircles()
         {
-            return ReadString("blue circles");
+            return ReadString(Constants.ColumnBlueCircles);
         }
 
         public int GetYellowCircles()
         {
-            return ReadString("yellow circles");
+            return ReadString(Constants.ColumnYellowCircles);
         }
     }
 }

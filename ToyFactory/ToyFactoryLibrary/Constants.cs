@@ -23,10 +23,9 @@ namespace ToyFactoryLibrary
 
         public const decimal SquarePrice = 1;
         public const decimal TrianglePrice = 2;
-        public const decimal CirclePrice = 3;
-
-        public const decimal RedColourSurcharge = 1;
-
+        public const decimal CirclePrice = 3; 
+        public const decimal RedColourSurcharge = 1; 
+        
 
         public const string InvoiceHasBeenGenerated = "Your invoice report has been generated: ";
         public const string CuttingListHasBeenGenerated = "Your cutting list has been generated: ";
