@@ -1,4 +1,3 @@
-using ToyFactoryLibrary;
 using ToyFactoryLibrary.Blocks;
 using ToyFactoryLibrary.Enums;
 using Xunit;
@@ -13,10 +12,8 @@ namespace ToyFactoryTests.ToyBlockTests
         [InlineData(Colour.Yellow)]
         public void Circle_test_set_Colour(Colour expected)
         {
-            // Arrange
-            var circle = new Circle(expected);
-
-            // Act 
+            // Act
+            var circle = new Circle(expected);  
 
             // Assert
             Assert.Equal(expected, circle.Colour);
