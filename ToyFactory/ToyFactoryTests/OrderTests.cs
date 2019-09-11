@@ -178,5 +178,34 @@ namespace ToyFactoryTests
             // Assert
             Assert.Equal(2, fakeToyBlocksList.RedCircles);
         }
+        
+        [Fact]
+        public void adding_blocks_to_order_should_update_pricing()
+        {
+            // Arrange
+            var fakeToyBlocksList = new ToyBlocksList();
+            var order = new Order("jane", "20 Dairy Road", DateTime.Now, 1, new ConsoleResponseManager(),
+                fakeToyBlocksList);
+
+            // Act
+            order.AddBlocksToOrder(new List<IToyBlock>
+            {
+                new Circle(Colour.Red), 
+                new Circle(Colour.Red), 
+                new Circle(Colour.Blue), 
+                new Triangle(Colour.Red), 
+                new Triangle(Colour.Blue), 
+                new Square(Colour.Yellow),
+                new Square(Colour.Yellow),
+                new Square(Colour.Yellow)
+            });
+
+            // Assert
+            Assert.Equal(3, order.SquaresPrice);
+            Assert.Equal(4,order.TrianglesPrice);
+            Assert.Equal(9,order.CirclesPrice);
+            Assert.Equal(3,order.RedSurchargePrice);
+            Assert.Equal(19,order.TotalPrice);
+        }
     }
 }

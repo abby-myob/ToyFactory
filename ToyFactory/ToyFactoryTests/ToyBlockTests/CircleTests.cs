@@ -17,6 +17,7 @@ namespace ToyFactoryTests.ToyBlockTests
 
             // Assert
             Assert.Equal(expected, circle.Colour);
+            // TODO I think these might be low value test in the block
         }
     }
 }

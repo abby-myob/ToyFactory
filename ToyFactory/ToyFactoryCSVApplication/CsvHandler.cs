@@ -13,8 +13,8 @@ namespace ToyFactoryCSVApplication
         public CsvHandler(OrderManager orderManager)
         {
             OrderManager = orderManager;
-        } 
-        
+        }
+
         public void ReadCsv(string path)
         {
             var csvReader = File.ReadAllText(path);
@@ -42,7 +42,8 @@ namespace ToyFactoryCSVApplication
                     $"${order.ToyBlocksList.TotalSquares * Constants.SquarePrice}",
                     $"${order.ToyBlocksList.TotalTriangles * Constants.TrianglePrice}",
                     $"${order.ToyBlocksList.TotalCircles * Constants.CirclePrice}",
-                    $"${order.ToyBlocksList.TotalRedBlocks * Constants.RedColourSurcharge}"
+                    $"${order.ToyBlocksList.TotalRedBlocks * Constants.RedColourSurcharge}",
+                    $"${order.ToyBlocksList.TotalRedBlocks * Constants.RedColourSurcharge + order.ToyBlocksList.TotalCircles * Constants.CirclePrice + order.ToyBlocksList.TotalTriangles * Constants.TrianglePrice + order.ToyBlocksList.TotalSquares * Constants.SquarePrice}",
                 };
                 orders.Add(info);
             }
@@ -135,7 +136,8 @@ namespace ToyFactoryCSVApplication
                 Constants.SquaresText,
                 Constants.TrianglesText,
                 Constants.CirclesText,
-                Constants.RedColourSurchargeText
+                Constants.RedColourSurchargeText,
+                Constants.TotalPriceText
             };
             return columnNames;
         }

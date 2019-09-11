@@ -26,15 +26,6 @@ namespace ToyFactoryConsole
             
             orderManager.GenerateCuttingListOverallReport();
             orderManager.GeneratePaintingOverallReport();
-            
-            Console.Write("What order would you like to search for?");
-            orderManager.GenerateReports(Convert.ToInt32(Console.ReadLine()));
-            
-            // search by name
-            
-            // search by date
-            
-            // remove 
         }
     }
 }

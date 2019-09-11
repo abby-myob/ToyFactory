@@ -79,6 +79,7 @@ namespace ToyFactoryConsole
             return Convert.ToInt32(Console.ReadLine());
         }
 
+        // TODO Not sure where to put this csv line as I need it in the csv response manager
         public ICsvLine Line { get; set; }
     }
 }

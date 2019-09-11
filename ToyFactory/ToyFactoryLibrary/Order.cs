@@ -14,6 +14,12 @@ namespace ToyFactoryLibrary
         public int OrderNumber { get; }
         public IResponseManager ResponseManager { get; }
         public IToyBlocksList ToyBlocksList { get; }
+        
+        public decimal SquaresPrice { get; private set; }
+        public decimal TrianglesPrice { get; private set; }
+        public decimal CirclesPrice { get; private set; }
+        public decimal RedSurchargePrice { get; private set; }
+        public decimal TotalPrice { get; private set; }
 
         public Order(string name, string address, in DateTime dueDate, int orderNumber,
             IResponseManager responseManager, IToyBlocksList toyBlocksList)
@@ -62,6 +68,17 @@ namespace ToyFactoryLibrary
             {
                 ToyBlocksList.Add(toyBlock);
             }
+
+            UpdatePricing();
+        }
+
+        private void UpdatePricing()
+        {
+            SquaresPrice = Constants.SquarePrice * ToyBlocksList.TotalSquares;
+            TrianglesPrice = Constants.TrianglePrice * ToyBlocksList.TotalTriangles;
+            CirclesPrice = Constants.CirclePrice * ToyBlocksList.TotalCircles;
+            RedSurchargePrice = Constants.RedColourSurcharge * ToyBlocksList.TotalRedBlocks;
+            TotalPrice = SquaresPrice + TrianglesPrice + CirclesPrice + RedSurchargePrice;
         }
 
         public void EditName(string newName)

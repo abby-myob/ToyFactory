@@ -91,14 +91,16 @@ namespace ToyFactoryLibrary
                 $"{Constants.CirclesText}                    {order.ToyBlocksList.TotalCircles} @ ${Constants.CirclePrice} {Constants.PPIText} ${order.ToyBlocksList.TotalCircles * Constants.CirclePrice}");
             Console.WriteLine(
                 $"{Constants.RedColourSurchargeText}       {order.ToyBlocksList.TotalRedBlocks} @ ${Constants.RedColourSurcharge} {Constants.PPIText} ${order.ToyBlocksList.TotalRedBlocks * Constants.RedColourSurcharge}");
+            Console.WriteLine(
+                $"{Constants.TotalPriceText}                    ${order.ToyBlocksList.TotalSquares * Constants.SquarePrice + order.ToyBlocksList.TotalTriangles * Constants.TrianglePrice + order.ToyBlocksList.TotalCircles * Constants.CirclePrice + order.ToyBlocksList.TotalRedBlocks * Constants.RedColourSurcharge}");
         }
 
         private void PrintOrderHeader(IOrder order)
         {
-            Console.Write($"{Constants.NameText}{order.Name}  ");
-            Console.Write($"{Constants.AddressText}{order.Address}  ");
-            Console.Write($"{Constants.DueDateText}{order.DueDate.ToString("dd-MMM-yy", CultureInfo.InvariantCulture)}");
-            Console.Write($"{Constants.OrderNumberText}{order.OrderNumber}  \n");
+            Console.Write($"{Constants.ColumnName}: {order.Name}  ");
+            Console.Write($"{Constants.ColumnAddress}: {order.Address}  ");
+            Console.Write($"{Constants.ColumnDueDate}: {order.DueDate.ToString("dd-MMM-yy", CultureInfo.InvariantCulture)}");
+            Console.Write($"{Constants.ColumnOrderNumber}: {order.OrderNumber}  \n");
         }
 
         private void PrintToyBlockTable(IOrder order)
