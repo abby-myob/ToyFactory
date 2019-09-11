@@ -1,12 +1,12 @@
-using System;
-using System.Collections.Generic;
 using Moq;
+using Xunit;
+using System;
 using ToyFactoryConsole;
 using ToyFactoryLibrary;
 using ToyFactoryLibrary.Blocks;
 using ToyFactoryLibrary.Enums;
+using System.Collections.Generic;
 using ToyFactoryLibrary.Interfaces;
-using Xunit;
 
 namespace ToyFactoryTests
 {
@@ -121,7 +121,7 @@ namespace ToyFactoryTests
         [InlineData("Abby", "Abby")]
         [InlineData("Thomas", "Gertrude")]
         [InlineData("Gertrude ", "Gertrude")]
-        public void create_order_and_test_editing_of_Name(string name, string expected)
+        public void edit_Name_should_update_the_orders_name(string name, string expected)
         {
             // Arrange
             var order = new Order(name, "4", DateTime.Now, 1, new ConsoleResponseManager(), new ToyBlocksList());
@@ -137,7 +137,7 @@ namespace ToyFactoryTests
         [InlineData("20 Dairy Lane", "18 Dairy Lane")]
         [InlineData("20 Dairy Lane", "20 Lane Lane")]
         [InlineData("20 Dairy Lane", "18 Dairy Road")]
-        public void create_order_and_test_editing_of_Address(string address, string expected)
+        public void edit_address_should_update_orders_address(string address, string expected)
         {
             // Arrange
             var order = new Order("jane", address, DateTime.Now, 1, new ConsoleResponseManager(), new ToyBlocksList());
@@ -150,7 +150,7 @@ namespace ToyFactoryTests
         }
 
         [Fact]
-        public void create_order_and_test_editing_of_DueDate()
+        public void edit_due_date_should_update_orders_due_date()
         {
             // Arrange
             var order = new Order("jane", "20 Dairy Road", DateTime.Now, 1, new ConsoleResponseManager(),
@@ -164,7 +164,7 @@ namespace ToyFactoryTests
         }
 
         [Fact]
-        public void create_order_and_test_adding_of_ToyBlocks_to_ToyBlocksList()
+        public void adding_blocks_to_order_should_update_orders_toyBlocksList()
         {
             // Arrange
             var fakeToyBlocksList = new ToyBlocksList();
@@ -176,7 +176,7 @@ namespace ToyFactoryTests
             order.AddBlocksToOrder(new List<IToyBlock> {new Circle(Colour.Red), new Circle(Colour.Red)});
 
             // Assert
-            Assert.Equal(2,fakeToyBlocksList.RedCircles);
-        } 
+            Assert.Equal(2, fakeToyBlocksList.RedCircles);
+        }
     }
 }

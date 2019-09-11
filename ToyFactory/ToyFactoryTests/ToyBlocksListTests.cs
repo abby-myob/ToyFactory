@@ -22,7 +22,7 @@ namespace ToyFactoryTests
         }
 
         [Fact]
-        public void check_all_variables_are_updated_in_toyblocks()
+        public void check_all_variables_are_updated_in_toyBlocks()
         {
             // Arrange
             var toyBlocksList = new ToyBlocksList();
