@@ -1,13 +1,12 @@
-using System;
+using ToyFactoryLibrary.Interfaces;
 using System.Collections.Generic;
-using System.Linq;
-using Moq;
-using ToyFactoryConsole;
-using ToyFactoryLibrary;
 using ToyFactoryLibrary.Blocks;
 using ToyFactoryLibrary.Enums;
-using ToyFactoryLibrary.Interfaces;
+using ToyFactoryLibrary;
+using System.Linq;
+using System;
 using Xunit;
+using Moq;
 
 namespace ToyFactoryTests
 {
@@ -37,7 +36,7 @@ namespace ToyFactoryTests
         }
 
         [Fact]
-        public void Collect_order_test_it_generates_the_right_order()
+        public void Collect_order_should_generates_the_correct_order()
         {
             // Arrange 
             var orderManager = new OrderManager(CreateResponseFake().Object, new ConsoleReportGenerator());
@@ -71,7 +70,7 @@ namespace ToyFactoryTests
         [InlineData(2)]
         [InlineData(10)]
         [InlineData(100)]
-        public void Should_increase_the_order_number_per_order(int num)
+        public void adding_more_orders_should_increase_orderNumber_with_each_order_number(int num)
         {
             // Arrange 
             var orderManager = new OrderManager(CreateResponseFake().Object, new ConsoleReportGenerator());
@@ -90,7 +89,7 @@ namespace ToyFactoryTests
         }
 
         [Fact]
-        public void search_results_for_order_number()
+        public void search_orders_with_order_number()
         {
             // Arrange 
             var orderManager = new OrderManager(CreateResponseFake().Object, new ConsoleReportGenerator());
@@ -109,7 +108,7 @@ namespace ToyFactoryTests
         [Theory]
         [InlineData("Gerard", 2)]
         [InlineData("Abby", 0)]
-        public void search_results_for_person(string name, int expected)
+        public void search_orders_with_person_name(string name, int expected)
         {
             // Arrange 
             var orderManager = new OrderManager(CreateResponseFake().Object, new ConsoleReportGenerator());
@@ -128,7 +127,7 @@ namespace ToyFactoryTests
         [InlineData("19 June 2019", "21 June 2019", 2)]
         [InlineData("28 June 2019", "30 June 2019", 0)]
         [InlineData("28 June 2019", "22 June 2019", 0)]
-        public void search_results_for_date(string dateStart, string dateEnd, int expected)
+        public void search_orders_with_start_and_end_due_date(string dateStart, string dateEnd, int expected)
         {
             // Arrange 
             var orderManager = new OrderManager(CreateResponseFake().Object, new ConsoleReportGenerator());
@@ -144,9 +143,9 @@ namespace ToyFactoryTests
             // Assert 
             Assert.Equal(expected, orders.Count());
         }
-        
-        [Fact] 
-        public void delete_order_by_order_number()
+
+        [Fact]
+        public void delete_order_with_order_number()
         {
             // Arrange 
             var orderManager = new OrderManager(CreateResponseFake().Object, new ConsoleReportGenerator());
