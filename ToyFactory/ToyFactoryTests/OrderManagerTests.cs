@@ -7,6 +7,7 @@ using System.Linq;
 using System;
 using Xunit;
 using Moq;
+using ToyFactoryConsole;
 
 namespace ToyFactoryTests
 {

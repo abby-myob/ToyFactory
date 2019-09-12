@@ -3,66 +3,36 @@ using System.Globalization;
 using System.IO;
 using Csv;
 using ToyFactoryLibrary;
+using ToyFactoryLibrary.Interfaces;
 
-
-// I've run out of time but I was in the process of
-// turning this csvHandler into an interface of the report generator 
-// That's why most of this text is in CSV REPORT GENERATOR
 namespace ToyFactoryCSVApplication
-{
-    public class CsvHandler
+{ 
+    // I've run out of time but I was in the process of
+    // turning this csvHandler into an interface of the report generator 
+    // That's why there are a lot of notImplemented Exceptions here
+    internal class CsvReportGenerator : IReportGenerator
     {
-        private OrderManager OrderManager { get; }
-
-        public CsvHandler(OrderManager orderManager)
+        public void GenerateInvoice(IOrder order)
         {
-            OrderManager = orderManager;
+            throw new System.NotImplementedException();
         }
 
-        public void ReadCsv(string path)
+        public void GenerateCuttingListReport(IOrder order)
         {
-            var csvReader = File.ReadAllText(path);
-
-            foreach (var line in CsvReader.ReadFromText(csvReader))
-            {
-                OrderManager.ResponseManager.Line = line;
-                OrderManager.CollectOrder();
-            }
+            throw new System.NotImplementedException();
         }
 
-        public void WriteInvoice(string path)
+        public void GeneratePaintingReport(IOrder order)
         {
-            var columnNames = GenerateInvoiceColumnNames();
-            var orders = new List<string[]>();
-
-            foreach (var order in OrderManager.Orders)
-            {
-                var info = new[]
-                {
-                    order.Name,
-                    order.Address,
-                    order.DueDate.ToString("dd-MMM-yy", CultureInfo.InvariantCulture),
-                    order.OrderNumber.ToString(),
-                    $"${order.SquaresPrice}",
-                    $"${order.TrianglesPrice}",
-                    $"${order.CirclesPrice}",
-                    $"${order.RedSurchargePrice}",
-                    $"${order.TotalPrice}",
-                };
-                orders.Add(info);
-            }
-
-            orders.ToArray();
-            var csvWriter = CsvWriter.WriteToText(columnNames, orders, ',');
-            File.WriteAllText(path, csvWriter);
+            throw new System.NotImplementedException();
         }
 
-        public void WriteCuttingList(string path)
+        public void GenerateCuttingListOverallReport(List<IOrder> allOrders)
         {
             var columnNames = GenerateCuttingListColumnNames();
             var orders = new List<string[]>();
 
-            foreach (var order in OrderManager.Orders)
+            foreach (var order in allOrders)
             {
                 var info = new[]
                 {
@@ -79,15 +49,15 @@ namespace ToyFactoryCSVApplication
 
             orders.ToArray();
             var csvWriter = CsvWriter.WriteToText(columnNames, orders, ',');
-            File.WriteAllText(path, csvWriter);
+            File.WriteAllText("/Users/abby.thompson/Development/ToyFactory/CuttingList", csvWriter);
         }
 
-        public void WritePaintingReport(string path)
+        public void GeneratePaintingListOverallReport(List<IOrder> allOrders)
         {
             var columnNames = GeneratePaintingReportColumnNames();
             var orders = new List<string[]>();
 
-            foreach (var order in OrderManager.Orders)
+            foreach (var order in allOrders)
             {
                 var info = new[]
                 {
@@ -110,8 +80,9 @@ namespace ToyFactoryCSVApplication
 
             orders.ToArray();
             var csvWriter = CsvWriter.WriteToText(columnNames, orders, ',');
-            File.WriteAllText(path, csvWriter);
+            File.WriteAllText("/Users/abby.thompson/Development/ToyFactory/PaintingList", csvWriter);
         }
+
 
         private string[] GenerateCuttingListColumnNames()
         {

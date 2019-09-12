@@ -60,6 +60,8 @@ namespace ToyFactoryLibrary
 
             max = ResponseManager.GetYellowCircles();
             for (var i = 0; i < max; i++) ToyBlocksList.Add(new Circle(Colour.Yellow));
+            
+            UpdatePricing();
         }
         
         public void AddBlocksToOrder(IEnumerable<IToyBlock> blocks)

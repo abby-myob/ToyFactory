@@ -1,4 +1,4 @@
-Name,Address,Due Date,OrderNumber,Squares,Triangles,Circles,Red Colour Surcharge
-David Rudd,"1 Bob Avenue, Auckland",19-Jan-19,1,$2,$4,$9,$1
-Ryan Chen,"1 Mt Eden Road, Auckland",30-Jan-19,2,$1,$14,$15,$3
-Sarah West,"1 Mouse Road, Auckland",02-Jul-19,3,$8,$24,$51,$11
+Name,Address,Due Date,OrderNumber,Squares,Triangles,Circles,Red Colour Surcharge,Total
+David Rudd,"1 Bob Avenue, Auckland",19-Jan-19,1,$2,$4,$9,$1,$16
+Ryan Chen,"1 Mt Eden Road, Auckland",30-Jan-19,2,$1,$14,$15,$3,$33
+Sarah West,"1 Mouse Road, Auckland",02-Jul-19,3,$8,$24,$51,$11,$94

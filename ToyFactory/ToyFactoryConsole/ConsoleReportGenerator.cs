@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using ToyFactoryLibrary;
 using ToyFactoryLibrary.Interfaces;
 
-namespace ToyFactoryLibrary
+namespace ToyFactoryConsole
 {
     public class ConsoleReportGenerator : IReportGenerator
     {
