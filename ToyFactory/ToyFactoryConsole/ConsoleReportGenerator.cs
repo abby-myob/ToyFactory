@@ -76,6 +76,14 @@ namespace ToyFactoryConsole
                 $"{Constants.Column}");
         }
 
+        public void GenerateAllInvoices(List<IOrder> allOrders)
+        {
+            foreach (var order in allOrders)
+            {
+                GenerateInvoice(order);
+            }
+        }
+
         public void GenerateInvoice(IOrder order)
         {
             Console.WriteLine("");

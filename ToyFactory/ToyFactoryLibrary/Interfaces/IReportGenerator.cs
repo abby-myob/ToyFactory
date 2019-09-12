@@ -9,5 +9,6 @@ namespace ToyFactoryLibrary.Interfaces
         void GeneratePaintingReport(IOrder order);
         void GenerateCuttingListOverallReport(List<IOrder> orders);
         void GeneratePaintingListOverallReport(List<IOrder> orders);
+        void GenerateAllInvoices(List<IOrder> allOrders);
     }
 }

@@ -49,6 +49,10 @@ namespace ToyFactoryLibrary
         { 
             ReportGenerator.GeneratePaintingListOverallReport(Orders);
         }
+        public void GenerateAllInvoices()
+        { 
+            ReportGenerator.GenerateAllInvoices(Orders);
+        }
 
         public IOrder SearchByOrderNumber(int orderNumber)
         {

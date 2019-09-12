@@ -7,10 +7,11 @@ namespace ToyFactoryCSVApplication
         private static void Main()
         {
             var orderManager = new OrderManager(new CsvResponseManager(), new CsvReportGenerator());
-            var csvHandler = new CsvHandler(orderManager);
-
+            
+            var csvHandler = new CsvReader(orderManager);
             csvHandler.ReadCsv("/Users/abby.thompson/Development/ToyFactory/Input");
-            csvHandler.WriteInvoice("/Users/abby.thompson/Development/ToyFactory/Invoice");
+            
+            orderManager.GenerateAllInvoices();
             orderManager.GenerateCuttingListOverallReport();
             orderManager.GeneratePaintingOverallReport();
         }

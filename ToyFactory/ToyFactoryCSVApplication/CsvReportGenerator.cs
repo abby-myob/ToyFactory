@@ -6,7 +6,7 @@ using ToyFactoryLibrary;
 using ToyFactoryLibrary.Interfaces;
 
 namespace ToyFactoryCSVApplication
-{ 
+{
     // I've run out of time but I was in the process of
     // turning this csvHandler into an interface of the report generator 
     // That's why there are a lot of notImplemented Exceptions here
@@ -14,17 +14,44 @@ namespace ToyFactoryCSVApplication
     {
         public void GenerateInvoice(IOrder order)
         {
-            throw new System.NotImplementedException();
+            // TODO
         }
 
         public void GenerateCuttingListReport(IOrder order)
         {
-            throw new System.NotImplementedException();
+            // TODO
         }
 
         public void GeneratePaintingReport(IOrder order)
         {
-            throw new System.NotImplementedException();
+            // TODO
+        }
+
+        public void GenerateAllInvoices(List<IOrder> allOrders)
+        {
+            var columnNames = GenerateInvoiceColumnNames();
+            var orders = new List<string[]>();
+
+            foreach (var order in allOrders)
+            {
+                var info = new[]
+                {
+                    order.Name,
+                    order.Address,
+                    order.DueDate.ToString("dd-MMM-yy", CultureInfo.InvariantCulture),
+                    order.OrderNumber.ToString(),
+                    $"${order.SquaresPrice}",
+                    $"${order.TrianglesPrice}",
+                    $"${order.CirclesPrice}",
+                    $"${order.RedSurchargePrice}",
+                    $"${order.TotalPrice}",
+                };
+                orders.Add(info);
+            }
+
+            orders.ToArray();
+            var csvWriter = CsvWriter.WriteToText(columnNames, orders, ',');
+            File.WriteAllText("/Users/abby.thompson/Development/ToyFactory/Invoice", csvWriter);
         }
 
         public void GenerateCuttingListOverallReport(List<IOrder> allOrders)
